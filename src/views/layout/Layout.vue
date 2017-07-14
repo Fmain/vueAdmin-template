@@ -73,7 +73,7 @@
             top: 0;
             left: 0;
             z-index: 9999;
-            // overflow: hidden;
+            overflow: hidden;
             background: #324157;
             border-bottom: 5px solid #009688;
             // transition: all .28s ease-out;

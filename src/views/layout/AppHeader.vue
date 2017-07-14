@@ -1,21 +1,41 @@
 <template>
   <div class="header">
     <div class="logo">
-      <!-- <img src="assets/images/logo.png" alt=""> -->
+      <img src="../../assets/images/logo.png" alt=""> 
     </div>
     <div class="hamburger">
       <hamburger class="hamburger-container" :toggleClick="toggleSideBar" :isActive="sidebar.opened"></hamburger>  
     </div>
+
     <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="1">处理中心</el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">我的工作台</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">选项3</el-menu-item>
-      </el-submenu>
-      <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+      <el-menu-item index="1"><i class="el-icon-message"></i>舆情监测</el-menu-item>
+      <el-menu-item index="2"><i class="el-icon-message"></i>行业指数</el-menu-item>
+      <el-menu-item index="3"><i class="el-icon-message"></i>研究报告</el-menu-item>
+      <el-menu-item index="4"><i class="el-icon-message"></i>设置</el-menu-item>
+      <div class="nav_margin"></div>
+      <el-menu-item index="5" @click='screenfull'><i class="el-icon-message"></i>全屏</el-menu-item>
+      <el-menu-item index="6"><i class="el-icon-message"></i>锁屏</el-menu-item>
+      <el-menu-item index="7"><i class="el-icon-message"></i>清除缓存</el-menu-item>
+      <el-menu-item index="8"><i class="el-icon-message"></i>主题</el-menu-item>
     </el-menu> 
+
+    <!-- 全屏组件 -->
+    <!-- <screenfull class='screenfull'></screenfull> -->
+
+    <el-dropdown class="avatar-container" trigger="click">
+        <div class="avatar-wrapper">
+            <img class="user-avatar" :src="avatar+'?imageView2/1/w/80/h/80'">
+            <i class="el-icon-caret-bottom"></i>
+        </div>
+        <el-dropdown-menu class="user-dropdown" slot="dropdown">
+            <router-link class='inlineBlock' to="/">
+                <el-dropdown-item>
+                    Home
+                </el-dropdown-item>
+            </router-link>
+            <el-dropdown-item divided><span @click="logout" style="display:block;">退出登录</span></el-dropdown-item>
+        </el-dropdown-menu>
+    </el-dropdown>
   </div>
 </template>
 
@@ -23,16 +43,23 @@
   import { mapGetters } from 'vuex';
   import Levelbar from './Levelbar';
   import Hamburger from '@/components/Hamburger';
+  // import Screenfull from '@/components/Screenfull';
+  import screenfull from 'screenfull';
+
 
   export default {
     data() {
       return {
         activeIndex: '1',
-        activeIndex2: '1'
+        activeIndex2: '1',
+        isFullscreen: false
+
       };
     },
     components: {
-      Hamburger
+      Hamburger,
+      // Screenfull
+
     },
     computed: {
       ...mapGetters([
@@ -46,6 +73,22 @@
       },
       handleSelect(key, keyPath) {
         console.log(key, keyPath);
+      },
+      logout() {
+        this.$store.dispatch('LogOut').then(() => {
+          location.reload();  // 为了重新实例化vue-router对象 避免bug
+        });
+      },
+      screenfull() {
+        // alert(1);
+        if (!screenfull.enabled) {
+          this.$message({
+            message: 'you browser can not work',
+            type: 'warning'
+          });
+          return false;
+        }
+        screenfull.toggle();
       }
     }
   }
@@ -53,26 +96,90 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .header {
-    // height: 55px;
     width: 100%;
   }
-  .logo {
+  .header .logo {
     width: 180px;
     height: 55px;
-    background: pink;
     float: left;
+    text-align: center; 
+  }
+  .header .logo img {
+    width: 120px;
+    height: 55px;
   }
   .hamburger {
     line-height: 60px;
     height: 60px;
     float: left;
-    padding: 0 10px;
+    padding: 0 5px;
     background: #009688;
   }
   .el-menu-demo {
-    margin-left: 250px;
-    height: 55px;
+    margin-left: 220px;
+    height: 45px;
   }
+  .el-menu--horizontal .el-menu-item {
+    height: 55px;
+    line-height: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .nav_margin {
+    float: left;
+    width: 96px;
+    height: 1px;
+  }
+
+  .screenfull {
+    position: absolute;
+    right: 105px;
+    top: 16px;
+    color: #fff;
+  }
+  .avatar-container {
+    height: 50px;
+    display: inline-block;
+    position: absolute;
+    right: 35px;
+    top: 0;
+  }
+  .el-dropdown {
+    color: #fff;
+    font-size: 14px;
+  }
+  .avatar-container .avatar-wrapper {
+    cursor: pointer;
+    margin-top: 5px;
+    position: relative;
+  }
+  .avatar-container .avatar-wrapper .user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+  }
+  // .avatar-container {
+  //     height: 50px;
+  //     display: inline-block;
+  //     position: absolute;
+  //     right: 35px;
+  //     .avatar-wrapper {
+  //         cursor: pointer;
+  //         margin-top: 5px;
+  //         position: relative;
+  //         .user-avatar {
+  //             width: 40px;
+  //             height: 40px;
+  //             border-radius: 10px;
+  //         }
+  //         .el-icon-caret-bottom {
+  //             position: absolute;
+  //             right: -20px;
+  //             top: 25px;
+  //             font-size: 12px;
+  //         }
+  //     }
+  // }
 </style>
 
 
