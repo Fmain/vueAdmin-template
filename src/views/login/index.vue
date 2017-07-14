@@ -21,8 +21,8 @@
           登录
         </el-button>
       </el-form-item>
-      <div class='tips'>admin账号为:admin@wallstreetcn.com 密码随便填</div>
-      <div class='tips'>editor账号:editor@wallstreetcn.com 密码随便填</div>
+      <div class='tips'>admin账号为:admin@test.com 密码随便填</div>
+      <div class='tips'>editor账号:editor@test.com 密码随便填</div>
     </el-form>
   </div>
 </template>
@@ -49,7 +49,7 @@
         };
         return {
           loginForm: {
-            email: 'admin@wallstreetcn.com',
+            email: 'admin@test.com',
             password: '111111'
           },
           loginRules: {

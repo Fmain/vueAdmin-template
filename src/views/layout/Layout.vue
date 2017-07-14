@@ -1,5 +1,8 @@
 <template>
     <div class="app-wrapper" :class="{hideSidebar:!sidebar.opened}">
+        <div class="header-wrapper">
+            <app-header></app-header>
+        </div>
         <div class="sidebar-wrapper">
             <sidebar class="sidebar-container"></sidebar>
         </div>
@@ -11,14 +14,15 @@
 </template>
 
 <script>
-    import { Navbar, Sidebar, AppMain } from '@/views/layout';
+    import { Navbar, Sidebar, AppMain, AppHeader } from '@/views/layout';
 
     export default {
       name: 'layout',
       components: {
         Navbar,
         Sidebar,
-        AppMain
+        AppMain,
+        AppHeader
       },
       computed: {
         sidebar() {
@@ -55,12 +59,24 @@
         .sidebar-wrapper {
             width: 180px;
             position: fixed;
-            top: 0;
+            top: 60px;
             bottom: 0;
             left: 0;
             z-index: 1001;
             overflow: hidden;
             transition: all .28s ease-out;
+        }
+        .header-wrapper {
+            width: 100%;
+            height: 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+            // overflow: hidden;
+            background: #324157;
+            border-bottom: 5px solid #009688;
+            // transition: all .28s ease-out;
         }
         .sidebar-container {
             transition: all .28s ease-out;
@@ -74,6 +90,7 @@
         .main-container {
             min-height: 100%;
             transition: all .28s ease-out;
+            margin-top: 60px;
             margin-left: 180px;
         }
     }
