@@ -1,3 +1,5 @@
+// 通过用户的权限和之前在router.js里面asyncRouterMap的每一个页面所需要的权限做匹配，最后返回一个该用户能够访问路由有哪些
+
 import { asyncRouterMap, constantRouterMap } from '@/router/index';
 
 /**
@@ -30,9 +32,22 @@ function filterAsyncRouter(asyncRouterMap, roles) {
   })
   return accessedRouters
 }
+/**
+ * 设置头部导航路由的切换
+ */
+function switchRouter(routerItems, index) {
+  // console.log(routerItems)
+  for (var j = 0; j < routerItems.length; j++) {
+    routerItems[j].hidden = false
+    if (routerItems[j].index !== index) {
+      routerItems[j].hidden = true
+    }
+  }
+}
 
 const permission = {
   state: {
+    routerItem: 1,
     routers: constantRouterMap,
     addRouters: []
   },
@@ -40,6 +55,42 @@ const permission = {
     SET_ROUTERS: (state, routers) => {
       state.addRouters = routers;
       state.routers = constantRouterMap.concat(routers);
+    },
+    ChangeRouterItem: (state, i) => {
+      state.routerItem = parseInt(i);
+      var routerItems = state.addRouters;
+      // console.log(state.routerItem)
+      switch (state.routerItem) {
+        case 1:
+          // console.log(1)
+          // console.log(state.addRouters)
+          // switchRouter(routerItems, 1)
+          // console.log(routerItems)
+          // for (var j = 0; j < routerItems.length; j++) {
+          //   routerItems[j].hidden = false
+          //   if (routerItems[j].index !== 1) {
+          //     routerItems[j].hidden = true
+          //   }
+          // }
+          switchRouter(routerItems, 1)
+          break;
+        case 2:
+          // console.log(2)
+          switchRouter(routerItems, 2)
+          break;
+        case 3:
+          // console.log(3)
+          switchRouter(routerItems, 3)
+          break;
+        case 4:
+          // console.log(4)
+          switchRouter(routerItems, 4)
+          break;
+        default:
+          // console.log(typeof(state.routerItem))
+          return false
+          break;
+      }
     }
   },
   actions: {

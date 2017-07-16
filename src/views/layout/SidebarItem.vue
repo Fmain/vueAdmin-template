@@ -24,16 +24,18 @@
 </template>
 
 <script>
-  // {
-  //   path: '/permission',
-  //   component: Layout,
-  //   redirect: '/permission/index',
-  //   name: '权限测试',
-  //   icon: 'quanxian',
-  //   meta: { role: ['admin'] },
-  //   noDropdown: true,
-  //   children: [{ path: 'index', component: Permission, name: '权限测试页', meta: { role: ['admin'] } }]
-  // },
+//   {
+//     path: '/__hyzx',
+//     component: Layout,
+//     redirect: '__hyzx/testAdmin',
+//     name: '行业资讯',
+//     icon: 'zujian',
+//     noDropdown: false,
+//     children: [
+//       { meta: { role: ['admin'] }, path: 'testAdmin', component: __hyzxA, name: 'testAdmin__hyzx ' },
+//       { meta: { role: ['editor'] }, path: 'testUser', component: __hyzxU, name: 'testUser__hyzx ' },
+//     ]
+//   },
     export default {
       name: 'SidebarItem',
       props: {

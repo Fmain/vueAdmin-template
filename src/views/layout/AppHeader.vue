@@ -36,11 +36,12 @@
             <el-dropdown-item divided><span @click="logout" style="display:block;">退出登录</span></el-dropdown-item>
         </el-dropdown-menu>
     </el-dropdown>
+    <el-button type="primary" @click="showRouterItem()">测试按钮</el-button>
   </div>
 </template>
 
 <script>
-  import { mapGetters } from 'vuex';
+  import { mapGetters, mapMutations } from 'vuex';
   import Levelbar from './Levelbar';
   import Hamburger from '@/components/Hamburger';
   // import Screenfull from '@/components/Screenfull';
@@ -53,13 +54,11 @@
         activeIndex: '1',
         activeIndex2: '1',
         isFullscreen: false
-
       };
     },
     components: {
       Hamburger,
       // Screenfull
-
     },
     computed: {
       ...mapGetters([
@@ -68,11 +67,18 @@
       ])
     },
     methods: {
+      // 测试全局中的routerItem，可注释掉
+      showRouterItem() {
+        // console.log(this.$store)
+        console.log(this.$store.state.permission.routerItem)
+      },
       toggleSideBar() {
         this.$store.dispatch('ToggleSideBar')
       },
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
+        // 更改routerItem的值
+        this.$store.commit('ChangeRouterItem',key)
       },
       logout() {
         this.$store.dispatch('LogOut').then(() => {
@@ -95,6 +101,10 @@
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
+  .el-button {
+    position: absolute;
+    top: 12px;
+  }
   .header {
     width: 100%;
   }

@@ -38,11 +38,18 @@ const __yqyjA = _import('_sentiment/__yqyj/testAdmin');
 const __yqyjU = _import('_sentiment/__yqyj/testUser');
 
 /* _index */
+const __ictA = _import('_index/__ict/testAdmin');
+const __ictU = _import('_index/__ict/testUser');
+const __jjjrA = _import('_index/__jjjr/testAdmin');
+const __jjjrU = _import('_index/__jjjr/testUser');
 
 /* _report */
+const __bgglA = _import('_report/__bggl/testAdmin');
+const __bgglU = _import('_report/__bggl/testUser');
 
 /* _setting */
-
+const __dqglA = _import('_setting/__dqgl/testAdmin');
+const __dqglU = _import('_setting/__dqgl/testUser');
 
 Vue.use(Router);
 
@@ -53,6 +60,9 @@ Vue.use(Router);
  * noDropdown : if `noDropdown:true` will not has submenu in the sidebar
  * meta : `{ role: ['admin'] }`  will control the page role
  **/
+
+//所有权限通用路由表 
+//如首页和登录页和一些不用权限的公用页面
 export const constantRouterMap = [
     { path: '/login', component: Login, hidden: true },
     { path: '/404', component: Err404, hidden: true },
@@ -69,16 +79,22 @@ export const constantRouterMap = [
 export default new Router({
     // mode: 'history', //后端支持可开
     scrollBehavior: () => ({ y: 0 }),
+    //实例化vue的时候只挂载constantRouter
     routes: constantRouterMap
 });
 
+//异步挂载的路由
+//动态需要根据权限加载的路由表 
 export const asyncRouterMap = [
+  // _sentiment
   {
+    index: 1,
     path: '/__hyzx',
     component: Layout,
     redirect: '__hyzx/testAdmin',
     name: '行业资讯',
     icon: 'zujian',
+    hidden: false,
     noDropdown: false,
     children: [
       { meta: { role: ['admin'] }, path: 'testAdmin', component: __hyzxA, name: 'testAdmin__hyzx ' },
@@ -86,11 +102,13 @@ export const asyncRouterMap = [
     ]
   },
   {
+    index: 1,
     path: '/__qyxx',
     component: Layout,
     redirect: '__qyxx/testAdmin',
     name: '企业信息',
     icon: 'zujian',
+    hidden: false,
     noDropdown: false,
     children: [
       { meta: { role: ['admin'] }, path: 'testAdmin', component: __qyxxA, name: 'testAdmin__qyxx ' },
@@ -98,11 +116,13 @@ export const asyncRouterMap = [
     ]
   },
   {
+    index: 1,
     path: '/__jzds',
     component: Layout,
     redirect: '__jzds/testAdmin',
     name: '竞争对手',
     icon: 'zujian',
+    hidden: false,
     noDropdown: false,
     children: [
       { meta: { role: ['admin'] }, path: 'testAdmin', component: __jzdsA, name: 'testAdmin__jzds ' },
@@ -110,11 +130,13 @@ export const asyncRouterMap = [
     ]
   },
   {
+    index: 1,
     path: '/__rdjc',
     component: Layout,
     redirect: '__rdjc/testAdmin',
     name: '热点监测',
     icon: 'zujian',
+    hidden: false,
     noDropdown: false,
     children: [
       { meta: { role: ['admin'] }, path: 'testAdmin', component: __rdjcA, name: 'testAdmin__rdjc ' },
@@ -122,11 +144,13 @@ export const asyncRouterMap = [
     ]
   },
   {
+    index: 1,
     path: '/__yqbg',
     component: Layout,
     redirect: '__yqbg/testAdmin',
     name: '舆情报告',
     icon: 'zujian',
+    hidden: false,
     noDropdown: false,
     children: [
       { meta: { role: ['admin'] }, path: 'testAdmin', component: __yqbgA, name: 'testAdmin__yqbg ' },
@@ -134,17 +158,77 @@ export const asyncRouterMap = [
     ]
   },
   {
+    index: 1,
     path: '/__yqyj',
     component: Layout,
     redirect: '__yqyj/testAdmin',
     name: '舆情预警',
     icon: 'zujian',
+    hidden: false,
     noDropdown: false,
     children: [
       { meta: { role: ['admin'] }, path: 'testAdmin', component: __yqyjA, name: 'testAdmin__yqyj ' },
       { path: 'testUser', component: __yqyjU, name: 'testUser__yqyj ' },
     ]
   },
-
+  // _index
+  {
+    index: 2,
+    path: '/__ict',
+    component: Layout,
+    redirect: '__ict/testAdmin',
+    name: 'ICT',
+    icon: 'zujian',
+    hidden: true,
+    noDropdown: false,
+    children: [
+      { meta: { role: ['admin'] }, path: 'testAdmin', component: __ictA, name: 'testAdmin__ict ' },
+      { path: 'testUser', component: __ictU, name: 'testUser__ict ' },
+    ]
+  },
+  {
+    index: 2,
+    path: '/__jjjr',
+    component: Layout,
+    redirect: '__jjjr/testAdmin',
+    name: '经济金融',
+    icon: 'zujian',
+    hidden: true,
+    noDropdown: false,
+    children: [
+      { meta: { role: ['admin'] }, path: 'testAdmin', component: __jjjrA, name: 'testAdmin__jjjr ' },
+      { path: 'testUser', component: __jjjrU, name: 'testUser__jjjr ' },
+    ]
+  },
+  // _report
+  {
+    index: 3,
+    path: '/__bggl',
+    component: Layout,
+    redirect: '__bggl/testAdmin',
+    name: '报告管理',
+    icon: 'zujian',
+    hidden: true,
+    noDropdown: false,
+    children: [
+      { meta: { role: ['admin'] }, path: 'testAdmin', component: __bgglA, name: 'testAdmin__bggl ' },
+      { path: 'testUser', component: __bgglU, name: 'testUser__bggl ' },
+    ]
+  },
+  // _setting
+  {
+    index: 4,
+    path: '/__dqgl',
+    component: Layout,
+    redirect: '__dqgl/testAdmin',
+    name: '地区管理',
+    icon: 'zujian',
+    hidden: true,
+    noDropdown: false,
+    children: [
+      { meta: { role: ['admin'] }, path: 'testAdmin', component: __dqglA, name: 'testAdmin__dqgl ' },
+      { path: 'testUser', component: __dqglU, name: 'testUser__dqgl ' },
+    ]
+  },
   { path: '*', redirect: '/404', hidden: true }
 ];
