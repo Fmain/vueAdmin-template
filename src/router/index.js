@@ -77,6 +77,7 @@ export const constantRouterMap = [
 ]
 
 export default new Router({
+    linkActiveClass: 'default-active',
     // mode: 'history', //后端支持可开
     scrollBehavior: () => ({ y: 0 }),
     //实例化vue的时候只挂载constantRouter

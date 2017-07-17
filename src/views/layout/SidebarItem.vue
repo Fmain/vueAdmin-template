@@ -54,5 +54,8 @@
         display: block;
         text-indent: 10px;
     }
+    .default-active li {
+        color: #20a0ff;
+    }
 </style>
 
