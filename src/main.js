@@ -16,7 +16,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.component('icon-svg', IconSvg)
 
-const whiteList = ['/login'];
+const whiteList = ['/login', '/home'];
 router.beforeEach((to, from, next) => {
   NProgress.start();
   if (store.getters.token) { // 判断是否有token
@@ -39,7 +39,7 @@ router.beforeEach((to, from, next) => {
     if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
       next()
     } else {
-      next('/login'); // 否则全部重定向到登录页
+      next('/home'); // 否则全部重定向到登录页
       NProgress.done();
     }
   }

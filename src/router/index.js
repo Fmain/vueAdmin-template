@@ -13,7 +13,7 @@ const Login = _import('login/index');
 const dashboard = _import('dashboard/index');
 
 /* home */
-const home = _import('home/index');
+const home = _import('home/Main');
 
 /* error page */
 const Err404 = _import('404');
@@ -65,6 +65,7 @@ Vue.use(Router);
 //如首页和登录页和一些不用权限的公用页面
 export const constantRouterMap = [
     { path: '/login', component: Login, hidden: true },
+    { path: '/home', component: home, hidden: true },
     { path: '/404', component: Err404, hidden: true },
     {
         path: '/',
@@ -169,7 +170,7 @@ export const asyncRouterMap = [
     noDropdown: false,
     children: [
       { meta: { role: ['admin'] }, path: 'testAdmin', component: __yqyjA, name: 'testAdmin__yqyj ' },
-      { path: 'testUser', component: __yqyjU, name: 'testUser__yqyj ' },
+      { meta: { role: ['editor'] }, path: 'testUser', component: __yqyjU, name: 'testUser__yqyj ' },
     ]
   },
   // _index

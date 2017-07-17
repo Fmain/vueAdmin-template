@@ -50,7 +50,7 @@
         return {
           loginForm: {
             email: 'admin@test.com',
-            password: '111111'
+            password: ''
           },
           loginRules: {
             email: [
@@ -70,7 +70,7 @@
               this.loading = true;
               this.$store.dispatch('Login', this.loginForm).then(() => {
                 this.loading = false;
-                this.$router.push({ path: '/' });
+                this.$router.push({ path: '/dashboard' });
               }).catch(() => {
                 this.loading = false;
               });

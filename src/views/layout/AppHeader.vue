@@ -36,7 +36,7 @@
             <el-dropdown-item divided><span @click="logout" style="display:block;">退出登录</span></el-dropdown-item>
         </el-dropdown-menu>
     </el-dropdown>
-    <el-button type="primary" @click="showRouterItem()">测试按钮</el-button>
+    <!-- <el-button type="primary" @click="showRouterItem()">测试按钮</el-button> -->
   </div>
 </template>
 
