@@ -6,7 +6,7 @@
       <div class="out-box">
         <div class="box-header">
           <a class="Dueros-header-left" href="#">
-            <img class="img" src="assets/index/index-logo.png" />
+            <img class="img" src="../../assets/index/index-logo.png" />
             <span class="center-text">&middot;</span>
             <span class="h-text">智训咨询服务平台</span>
           </a>
@@ -95,7 +95,7 @@
       <div class="video-box">
         <div class="example-intr">
           <a href="#" target="blank">
-            <img class="show-img video-img" src="assets/index/index-banner1.jpg">
+            <img class="show-img video-img" src="../../assets/index/index-banner1.jpg">
             <div class="intr-text">
               <h4>行业指数</h4>
               <p>ICT行业、金融行业发展关键指数 </p>
@@ -104,7 +104,7 @@
         </div>
         <div class="example-intr">
           <a href="#">
-            <img class="show-img" src="assets/index/index-banner2.jpg">
+            <img class="show-img" src="../../assets/index/index-banner2.jpg">
             <div class="intr-text">
               <h4>舆情监测</h4>
               <p>覆盖行业资讯、市场动态、竞品分析、社会热点、安全稳定等重要领域的舆情</p>
@@ -113,7 +113,7 @@
         </div>
         <div class="example-intr">
           <a href="#">
-            <img class="show-img" src="assets/index/index-banner3.jpg">
+            <img class="show-img" src="../../assets/index/index-banner3.jpg">
             <div class="intr-text">
               <h4>深度报告</h4>
               <p>专家团队编制精品深度研究报告，全面研究市场动态、行业发展、政策动向、社会舆情等各个领域。</p>
@@ -122,7 +122,7 @@
         </div>
         <div class="example-intr">
           <a href="#">
-            <img class="show-img" src="assets/index/index-banner4.png">
+            <img class="show-img" src="../../assets/index/index-banner4.png">
             <div class="intr-text">
               <h4>智训技术课堂</h4>
               <p>智训视频教程旨在帮助开发者快速入门，更加全面的了解智训的系列产品及服务</p>
@@ -141,7 +141,7 @@
                 <h2>1.成为开发者</h2>
                 <p>&gt;马上开始&lt;</p>
               </a>
-            </div><div class="lead-step-dot"><img src="assets/index/index-connectdot.png"></div>
+            </div><div class="lead-step-dot"><img src="../../assets/index/index-connectdot.png"></div>
             <div class="lead-step-item
                       ">
               <a href="#">
@@ -149,7 +149,7 @@
                 <h2>2.创建产品</h2>
               </a>
             </div>
-            <div class="lead-step-dot"><img src="assets/index/index-connectdot.png"></div>
+            <div class="lead-step-dot"><img src="../../assets/index/index-connectdot.png"></div>
             <div class="lead-step-item
                       ">
               <a href="#">
@@ -157,7 +157,7 @@
                 <h2>3.集成开发</h2>
               </a>
             </div>
-            <div class="lead-step-dot"><img src="assets/index/index-connectdot.png"></div>
+            <div class="lead-step-dot"><img src="../../assets/index/index-connectdot.png"></div>
             <div class="lead-step-item
                       ">
               <a href="#">
@@ -171,25 +171,25 @@
       <section class="duer-adv">
         <h3 class="sub-title">智训的优势</h3>
         <div class="item-adv">
-          <img src="assets/index/index-adv1.png" class="img-adv" />
+          <img src="../../assets/index/index-adv1.png" class="img-adv" />
           <div class="adv-des">
             <p style="width: 156px;">智训整合了<br>世界顶尖人工智能<br>语音图像技术</p>
           </div>
         </div>
         <div class="item-adv">
-          <img src="assets/index/index-adv2.png" class="img-adv" />
+          <img src="../../assets/index/index-adv2.png" class="img-adv" />
           <div class="adv-des">
             <p style="width: 176px;">智训能帮助<br>企业开发者<br>一站式实现人工智能</p>
           </div>
         </div>
         <div class="item-adv">
-          <img src="assets/index/index-adv3.png"  class="img-adv" />
+          <img src="../../assets/index/index-adv3.png"  class="img-adv" />
           <div class="adv-des">
             <p style="width: 195px;">智训耗能很少<br>却可以满足几十个场景<br>10大类目100多项功能</p>
           </div>
         </div>
         <div class="item-adv">
-          <img src="assets/index/index-adv4.png" class="img-adv" />
+          <img src="../../assets/index/index-adv4.png" class="img-adv" />
           <div class="adv-des">
             <p style="width: 191px;">智训内容资源丰富<br>且开放互通</p>
           </div>
@@ -201,35 +201,35 @@
         <div class="case-items">
           <div class="case-item">
             <a href="#">
-              <img src="assets/index/index-scheme4.jpg">
+              <img src="../../assets/index/index-scheme4.jpg">
               <h3>音箱</h3>
               <p>您可以直接和音箱对话，通过语音完成设定日程、提醒、获取服务、家庭设备控制等操作</p>
             </a>
           </div>
           <div class="case-item">
             <a href="#">
-              <img src="assets/index/index-scheme5.png">
+              <img src="../../assets/index/index-scheme5.png">
               <h3>TV</h3>
               <p>搭载了智训的智能电视，可以用语音完成设备控制、影视资源搜索及播放等操作</p>
             </a>
           </div>
           <div class="case-item">
             <a href="#">
-              <img src="assets/index/index-scheme3.jpg">
+              <img src="../../assets/index/index-scheme3.jpg">
               <h3>冰箱</h3>
               <p>搭载了智训的智能冰箱可以通过语音交互，提供食材管理、食谱查询等服务</p>
             </a>
           </div>
           <div class="case-item">
             <a href="#">
-              <img src="assets/index/index-scheme8.jpg">
+              <img src="../../assets/index/index-scheme8.jpg">
               <h3>Dev. Kit</h3>
               <p>专为硬件厂商设计的远场语音交互解决方案，帮你快速体验智训功能</p>
             </a>
           </div>
           <div class="case-item">
             <a href="#">
-              <img src="assets/index/index-scheme6.jpg">
+              <img src="../../assets/index/index-scheme6.jpg">
               <h3>兼容服务</h3>
               <p>已搭载Alexa能力的设备，可以通过兼容协议简单快速地接入智训</p>
             </a>
@@ -237,7 +237,7 @@
 
           <div class="case-item">
             <a href="#">
-              <img src="assets/index/index-scheme2.png">
+              <img src="../../assets/index/index-scheme2.png">
               <h3>轻量级设备</h3>
 
               <p>智训为设备及模组厂商、硬件开发者提供的，端到端的一站式硬件接入方案</p>
@@ -245,14 +245,14 @@
           </div>
           <div class="case-item">
             <a href="#">
-              <img src="assets/index/index-scheme7.jpg">
+              <img src="../../assets/index/index-scheme7.jpg">
               <h3>SSML</h3>
               <p>独具特色的SSML解决方案，可以赋予语音更个性的TTS，甚至可以添加背景音乐</p>
             </a>
           </div>
           <div class="case-item">
             <a href="#">
-              <img src="assets/index/index-scheme1.png">
+              <img src="../../assets/index/index-scheme1.png">
               <h3>手机语音助手</h3>
               <p>您的智能助理，通过对话式交互提供日程提醒、智能导航、信息查询、聊天陪伴等服务</p>
             </a>
@@ -265,31 +265,31 @@
         <h3 class="sub-title">合作案例</h3>
         <ul class="item-box">
           <li class="item">
-            <img src="assets/index//index-fushikang.png">
+            <img src="../../assets/index//index-fushikang.png">
             <p>富士康</p>
           </li>
           <li class="item">
-            <img src="assets/index/index-bbk.png">
+            <img src="../../assets/index/index-bbk.png">
             <p>步步高</p>
           </li>
           <li class="item">
-            <img src="assets/index/index-botai.png">
+            <img src="../../assets/index/index-botai.png">
             <p>博泰</p>
           </li>
           <li class="item">
-            <img src="assets/index/index-fm.png">
+            <img src="../../assets/index/index-fm.png">
             <p>喜马拉雅FM</p>
           </li>
           <li class="item">
-            <img src="assets/index/index-anker.png">
+            <img src="../../assets/index/index-anker.png">
             <p>Anker</p>
           </li>
           <li class="item">
-            <img src="assets/index/index-aofei.png">
+            <img src="../../assets/index/index-aofei.png">
             <p>奥飞</p>
           </li>
           <li class="item">
-            <img src="assets/index/index-armoto.png">
+            <img src="../../assets/index/index-armoto.png">
             <p>ARMOTO</p>
           </li>
         </ul>
@@ -304,7 +304,7 @@
     </div>
     <div class="footer-wraper">
     <footer class="footer2">
-      <div class="duer-qrcode"><img src="assets/index/index-qrcode.png" width="144">
+      <div class="duer-qrcode"><img src="../../assets/index/index-qrcode.png" width="144">
         <p>微信公众号，请扫码关注我们</p></div>
       <div class="in-box">
         <div class="link-box">
