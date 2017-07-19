@@ -1,6 +1,6 @@
 <template>
-    <div class="app-container">
-      <h2>{{msg}}</h2>
+    <div class="home">
+      this is home page
     </div>
 </template>
 
@@ -8,7 +8,6 @@
   export default {
     data() {
       return {
-        msg: 'this is testUser page'
       }
     },
     methods: {
@@ -19,3 +18,4 @@
 <style scoped>
 
 </style>
+

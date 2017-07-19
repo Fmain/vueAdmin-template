@@ -6,14 +6,19 @@ const _import = require('./_import_' + process.env.NODE_ENV);
 /* layout */
 import Layout from '../views/layout/Layout';
 
-/* login */
-const Login = _import('login/index');
-
 /* dashboard */
 const dashboard = _import('dashboard/index');
 
 /* home */
 const home = _import('home/Main');
+const index = _import('home/index');
+const indexnumber = _import('home/indexnumber');
+const opinion = _import('home/opinion');
+const report = _import('home/report');
+/* login */
+const Login = _import('login/index');
+/* register */
+const register = _import('home/register');
 
 /* error page */
 const Err404 = _import('404');
@@ -23,33 +28,54 @@ const Test = _import('page/test');
 const Form = _import('page/form');
 const Table = _import('table/index');
 
-/* _sentiment */
-const __hyzxA = _import('_sentiment/__hyzx/testAdmin');
-const __hyzxU = _import('_sentiment/__hyzx/testUser');
-const __qyxxA = _import('_sentiment/__qyxx/testAdmin');
-const __qyxxU = _import('_sentiment/__qyxx/testUser');
-const __jzdsA = _import('_sentiment/__jzds/testAdmin');
-const __jzdsU = _import('_sentiment/__jzds/testUser');
-const __rdjcA = _import('_sentiment/__rdjc/testAdmin');
-const __rdjcU = _import('_sentiment/__rdjc/testUser');
-const __yqbgA = _import('_sentiment/__yqbg/testAdmin');
-const __yqbgU = _import('_sentiment/__yqbg/testUser');
-const __yqyjA = _import('_sentiment/__yqyj/testAdmin');
-const __yqyjU = _import('_sentiment/__yqyj/testUser');
+// 命名规则 用户角色_一级_二级_三级
+/* _opinion */
+// 行业资讯
+const A_O_hyzx = _import('_opinion/__hyzx/testAdmin');
+// const U_O_hyzx = _import('_opinion/__hyzx/testUser');
+const U_O_hyzx_xxhz = _import('_opinion/__hyzx/xxhzUser');
+// 企业信息
+const A_O_qyxx = _import('_opinion/__qyxx/testAdmin');
+// const U_O_qyxx = _import('_opinion/__qyxx/testUser');
+const U_O_qyxx_xxhz = _import('_opinion/__qyxx/xxhzUser');
+const U_O_qyxx_nrfx = _import('_opinion/__qyxx/nrfxUser');
+const U_O_qyxx_cbfx = _import('_opinion/__qyxx/cbfxUser');
+const U_O_qyxx_zzjb = _import('_opinion/__qyxx/zzjbUser');
+// 竞争对手
+const A_O_jzds = _import('_opinion/__jzds/testAdmin');
+const U_O_jzds = _import('_opinion/__jzds/testUser');
+// 热点监测
+const A_O_rdjc = _import('_opinion/__rdjc/testAdmin');
+const U_O_rdjc = _import('_opinion/__rdjc/testUser');
+// 舆情报告
+const A_O_yqbg = _import('_opinion/__yqbg/yqbgAdmin');
+const U_O_yqbg = _import('_opinion/__yqbg/yqbgUser');
+// 舆情预警
+const A_O_yqyj = _import('_opinion/__yqyj/yqyjAdmin');
+const U_O_yqyj = _import('_opinion/__yqyj/yqyjUser');
 
-/* _index */
-const __ictA = _import('_index/__ict/testAdmin');
-const __ictU = _import('_index/__ict/testUser');
-const __jjjrA = _import('_index/__jjjr/testAdmin');
-const __jjjrU = _import('_index/__jjjr/testUser');
+/* _indexnumber */
+const A_I_ict = _import('_indexnumber/__ict/testAdmin');
+const U_I_ict = _import('_indexnumber/__ict/testUser');
+const A_I_jjjr = _import('_indexnumber/__jjjr/testAdmin');
+const U_I_jjjr = _import('_indexnumber/__jjjr/testUser');
 
 /* _report */
-const __bgglA = _import('_report/__bggl/testAdmin');
-const __bgglU = _import('_report/__bggl/testUser');
+// 上线报告
+const A_R_sxbg = _import('_report/__sxbg/sxbgAdmin');
+const U_R_sxbg = _import('_report/__sxbg/sxbgUser');
+// 订阅管理
+const A_R_dygl = _import('_report/__dygl/dyglAdmin');
+const U_R_dygl = _import('_report/__dygl/dyglUser');
+
+const A_R_bggl = _import('_report/__bggl/testAdmin');
+const U_R_bggl = _import('_report/__bggl/testUser');
 
 /* _setting */
-const __dqglA = _import('_setting/__dqgl/testAdmin');
-const __dqglU = _import('_setting/__dqgl/testUser');
+const A_S_grxx = _import('_setting/__grxx/grxxAdmin');
+const U_S_grxx = _import('_setting/__grxx/grxxUser');
+const A_S_xgmm = _import('_setting/__xgmm/xgmmAdmin');
+const U_S_xgmm = _import('_setting/__xgmm/xgmmUser');
 
 Vue.use(Router);
 
@@ -65,7 +91,12 @@ Vue.use(Router);
 //如首页和登录页和一些不用权限的公用页面
 export const constantRouterMap = [
     { path: '/login', component: Login, hidden: true },
+    { path: '/register', component: register, hidden: true },
     { path: '/home', component: home, hidden: true },
+    { path: '/index', component: index, hidden: true },
+    { path: '/indexnumber', component: indexnumber, hidden: true },
+    { path: '/opinion', component: opinion, hidden: true },
+    { path: '/report', component: report, hidden: true },
     { path: '/404', component: Err404, hidden: true },
     {
         path: '/',
@@ -91,145 +122,178 @@ export const asyncRouterMap = [
   // _sentiment
   {
     index: 1,
-    path: '/__hyzx',
+    path: '/O_hhzx',
     component: Layout,
-    redirect: '__hyzx/testAdmin',
+    // redirect: 'O_hhzx/testAdmin',
     name: '行业资讯',
     icon: 'zujian',
     hidden: false,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: __hyzxA, name: 'testAdmin__hyzx ' },
-      { meta: { role: ['editor'] }, path: 'testUser', component: __hyzxU, name: 'testUser__hyzx ' },
+      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_hyzx, name: 'testAdmin__hyzx ' },
+      // { meta: { role: ['editor'] }, path: 'testUser', component: U_O_hyzx, name: 'testUser__hyzx ' },
+      { meta: { role: ['editor'] }, path: 'xxhz', component: U_O_hyzx_xxhz, name: '信息汇总（行业） ' },
     ]
   },
   {
     index: 1,
-    path: '/__qyxx',
+    path: '/O_qyxx',
     component: Layout,
-    redirect: '__qyxx/testAdmin',
+    // redirect: '__qyxx/testAdmin',
     name: '企业信息',
     icon: 'zujian',
     hidden: false,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: __qyxxA, name: 'testAdmin__qyxx ' },
-      { path: 'testUser', component: __qyxxU, name: 'testUser__qyxx ' },
+      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_qyxx, name: 'testAdmin__qyxx ' },
+      // { meta: { role: ['editor'] }, path: 'testUser', component: U_O_qyxx, name: 'testUser__qyxx ' },
+      { meta: { role: ['editor'] }, path: 'xxhz', component: U_O_qyxx_xxhz, name: '信息汇总 ' },
+      { meta: { role: ['editor'] }, path: 'nrfx', component: U_O_qyxx_nrfx, name: '内容分析 ' },
+      { meta: { role: ['editor'] }, path: 'cbfx', component: U_O_qyxx_cbfx, name: '成本分析 ' },
+      { meta: { role: ['editor'] }, path: 'zzjb', component: U_O_qyxx_zzjb, name: '制作简报 ' },
     ]
   },
   {
     index: 1,
-    path: '/__jzds',
+    path: '/O_jzds',
     component: Layout,
-    redirect: '__jzds/testAdmin',
+    // redirect: '__jzds/testAdmin',
     name: '竞争对手',
     icon: 'zujian',
     hidden: false,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: __jzdsA, name: 'testAdmin__jzds ' },
-      { path: 'testUser', component: __jzdsU, name: 'testUser__jzds ' },
+      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_jzds, name: 'testAdmin__jzds ' },
+      { meta: { role: ['editor'] }, path: 'testUser', component: U_O_jzds, name: 'testUser__jzds ' },
     ]
   },
   {
     index: 1,
-    path: '/__rdjc',
+    path: '/O_rdjc',
     component: Layout,
-    redirect: '__rdjc/testAdmin',
+    // redirect: '__rdjc/testAdmin',
     name: '热点监测',
     icon: 'zujian',
     hidden: false,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: __rdjcA, name: 'testAdmin__rdjc ' },
-      { path: 'testUser', component: __rdjcU, name: 'testUser__rdjc ' },
+      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_rdjc, name: 'testAdmin__rdjc ' },
+      { meta: { role: ['editor'] }, path: 'testUser', component: U_O_rdjc, name: 'testUser__rdjc ' },
     ]
   },
   {
     index: 1,
-    path: '/__yqbg',
+    path: '/O_yqbg',
     component: Layout,
-    redirect: '__yqbg/testAdmin',
-    name: '舆情报告',
+    // redirect: '__yqbg/testAdmin',
+    // name: '舆情报告',
     icon: 'zujian',
     hidden: false,
-    noDropdown: false,
+    noDropdown: true,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: __yqbgA, name: 'testAdmin__yqbg ' },
-      { path: 'testUser', component: __yqbgU, name: 'testUser__yqbg ' },
+      { meta: { role: ['admin'] }, path: 'yqbg', component: A_O_yqbg, name: '舆情报告 ' },
+      { meta: { role: ['editor'] }, path: 'yqbg', component: U_O_yqbg, name: '舆情报告 ' },
     ]
   },
   {
     index: 1,
-    path: '/__yqyj',
+    path: '/O_yqyj',
     component: Layout,
-    redirect: '__yqyj/testAdmin',
-    name: '舆情预警',
+    // redirect: '__yqyj/testAdmin',
+    // name: '舆情预警',
     icon: 'zujian',
     hidden: false,
-    noDropdown: false,
+    noDropdown: true,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: __yqyjA, name: 'testAdmin__yqyj ' },
-      { meta: { role: ['editor'] }, path: 'testUser', component: __yqyjU, name: 'testUser__yqyj ' },
+      { meta: { role: ['admin'] }, path: 'yqyj', component: A_O_yqyj, name: '舆情预警 ' },
+      { meta: { role: ['editor'] }, path: 'yqyj', component: U_O_yqyj, name: '舆情预警 ' },
     ]
   },
   // _index
   {
     index: 2,
-    path: '/__ict',
+    path: '/I_ict',
     component: Layout,
-    redirect: '__ict/testAdmin',
+    // redirect: '__ict/testAdmin',
     name: 'ICT',
     icon: 'zujian',
     hidden: true,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: __ictA, name: 'testAdmin__ict ' },
-      { path: 'testUser', component: __ictU, name: 'testUser__ict ' },
+      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_I_ict, name: 'testAdmin__ict ' },
+      { meta: { role: ['editor'] }, path: 'testUser', component: U_I_ict, name: 'testUser__ict ' },
     ]
   },
   {
     index: 2,
-    path: '/__jjjr',
+    path: '/I_jjjr',
     component: Layout,
-    redirect: '__jjjr/testAdmin',
+    // redirect: '__jjjr/testAdmin',
     name: '经济金融',
     icon: 'zujian',
     hidden: true,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: __jjjrA, name: 'testAdmin__jjjr ' },
-      { path: 'testUser', component: __jjjrU, name: 'testUser__jjjr ' },
+      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_I_jjjr, name: 'testAdmin__jjjr ' },
+      { meta: { role: ['editor'] }, path: 'testUser', component: U_I_jjjr, name: 'testUser__jjjr ' },
     ]
   },
   // _report
   {
     index: 3,
-    path: '/__bggl',
+    path: '/R_sxbg',
     component: Layout,
-    redirect: '__bggl/testAdmin',
-    name: '报告管理',
+    // redirect: '__bggl/testAdmin',
+    // name: '上线报告',
     icon: 'zujian',
     hidden: true,
-    noDropdown: false,
+    noDropdown: true,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: __bgglA, name: 'testAdmin__bggl ' },
-      { path: 'testUser', component: __bgglU, name: 'testUser__bggl ' },
+      // { meta: { role: ['admin'] }, path: 'sxbg', component: A_R_sxbg, name: '上线报告 ' },
+      { meta: { role: ['editor'] }, path: 'sxbg', component: U_R_sxbg, name: '上线报告 ' },
+    ]
+  },
+  {
+    index: 3,
+    path: '/R_dygl',
+    component: Layout,
+    // redirect: '__dybg/testAdmin',
+    // name: '订阅管理',
+    icon: 'zujian',
+    hidden: true,
+    noDropdown: true,
+    children: [
+      // { meta: { role: ['admin'] }, path: 'dygl', component: A_R_dybg, name: '订阅管理 ' },
+      { meta: { role: ['editor'] }, path: 'dygl', component: U_R_dygl, name: '订阅管理 ' },
     ]
   },
   // _setting
   {
     index: 4,
-    path: '/__dqgl',
+    path: '/S_grxx',
     component: Layout,
-    redirect: '__dqgl/testAdmin',
-    name: '地区管理',
+    // redirect: '__dqgl/testAdmin',
+    // name: '个人信息',
     icon: 'zujian',
     hidden: true,
-    noDropdown: false,
+    noDropdown: true,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: __dqglA, name: 'testAdmin__dqgl ' },
-      { path: 'testUser', component: __dqglU, name: 'testUser__dqgl ' },
+      // { meta: { role: ['admin'] }, path: 'grxx', component: A_S_grxx, name: '个人信息' },
+      { meta: { role: ['editor'] }, path: 'grxx', component: U_S_grxx, name: '个人信息' },
+    ]
+  },
+  {
+    index: 4,
+    path: '/S_xgmm',
+    component: Layout,
+    // redirect: '__dqgl/testAdmin',
+    // name: '修改密码',
+    icon: 'zujian',
+    hidden: true,
+    noDropdown: true,
+    children: [
+      // { meta: { role: ['admin'] }, path: 'xgmm', component: A_S_xgmm, name: '修改密码' },
+      { meta: { role: ['editor'] }, path: 'xgmm', component: U_S_xgmm, name: '修改密码' },
     ]
   },
   { path: '*', redirect: '/404', hidden: true }

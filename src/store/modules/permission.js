@@ -62,28 +62,15 @@ const permission = {
       // console.log(state.routerItem)
       switch (state.routerItem) {
         case 1:
-          // console.log(1)
-          // console.log(state.addRouters)
-          // switchRouter(routerItems, 1)
-          // console.log(routerItems)
-          // for (var j = 0; j < routerItems.length; j++) {
-          //   routerItems[j].hidden = false
-          //   if (routerItems[j].index !== 1) {
-          //     routerItems[j].hidden = true
-          //   }
-          // }
           switchRouter(routerItems, 1)
           break;
         case 2:
-          // console.log(2)
           switchRouter(routerItems, 2)
           break;
         case 3:
-          // console.log(3)
           switchRouter(routerItems, 3)
           break;
         case 4:
-          // console.log(4)
           switchRouter(routerItems, 4)
           break;
         default:
@@ -99,9 +86,11 @@ const permission = {
         const { roles } = data
         let accessedRouters
         if (roles.indexOf('admin') >= 0) {
-          accessedRouters = asyncRouterMap
-        } else {
           accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
+        }else if (roles.indexOf('editor') >= 0) {
+          accessedRouters = filterAsyncRouter(asyncRouterMap, roles)
+        }else {
+          return false
         }
         commit('SET_ROUTERS', accessedRouters);
         resolve();

@@ -10,13 +10,19 @@ import NProgress from 'nprogress'
 import 'normalize.css/normalize.css'
 import '@/assets/iconfont/iconfont'
 import IconSvg from '@/components/Icon-svg/index.vue'
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
+
+import echarts from 'echarts' // 需要在需要添加图标的组件中创建依赖的实例var echarts = require('echarts');
+Vue.prototype.$echarts = echarts;
 
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
 Vue.component('icon-svg', IconSvg)
+Vue.use(iView)
 
-const whiteList = ['/login', '/home'];
+const whiteList = ['/login', '/register', '/home', '/index', '/indexnumber', '/opinion', '/report'];
 router.beforeEach((to, from, next) => {
   NProgress.start();
   if (store.getters.token) { // 判断是否有token

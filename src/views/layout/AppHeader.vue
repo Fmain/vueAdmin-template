@@ -9,18 +9,13 @@
 
     <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
       <el-menu-item index="1"><i class="el-icon-message"></i>舆情监测</el-menu-item>
-      <el-menu-item index="2"><i class="el-icon-message"></i>行业指数</el-menu-item>
-      <el-menu-item index="3"><i class="el-icon-message"></i>研究报告</el-menu-item>
-      <el-menu-item index="4"><i class="el-icon-message"></i>设置</el-menu-item>
-      <div class="nav_margin"></div>
-      <el-menu-item index="5" @click='screenfull'><i class="el-icon-message"></i>全屏</el-menu-item>
-      <el-menu-item index="6"><i class="el-icon-message"></i>锁屏</el-menu-item>
-      <el-menu-item index="7"><i class="el-icon-message"></i>清除缓存</el-menu-item>
-      <el-menu-item index="8"><i class="el-icon-message"></i>主题</el-menu-item>
+      <el-menu-item index="2"><i class="el-icon-star-on"></i>行业指数</el-menu-item>
+      <el-menu-item index="3"><i class="el-icon-menu"></i>研究报告</el-menu-item>
+      <el-menu-item index="4"><i class="el-icon-setting"></i>设置</el-menu-item>
     </el-menu> 
 
     <!-- 全屏组件 -->
-    <!-- <screenfull class='screenfull'></screenfull> -->
+     <screenfull class='screenfull'></screenfull> 
 
     <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
@@ -44,7 +39,7 @@
   import { mapGetters, mapMutations } from 'vuex';
   import Levelbar from './Levelbar';
   import Hamburger from '@/components/Hamburger';
-  // import Screenfull from '@/components/Screenfull';
+  import Screenfull from '@/components/Screenfull';
   import screenfull from 'screenfull';
 
 
@@ -58,7 +53,7 @@
     },
     components: {
       Hamburger,
-      // Screenfull
+      Screenfull
     },
     computed: {
       ...mapGetters([
@@ -126,14 +121,14 @@
     background: #009688;
   }
   .el-menu-demo {
-    margin-left: 220px;
+    margin-left: 234px;
     height: 45px;
   }
   .el-menu--horizontal .el-menu-item {
     height: 55px;
     line-height: 60px;
     padding-left: 10px;
-    padding-right: 10px;
+    padding-right: 30px;
   }
   .nav_margin {
     float: left;
@@ -143,9 +138,8 @@
 
   .screenfull {
     position: absolute;
-    right: 105px;
+    right: 123px;
     top: 16px;
-    color: #fff;
   }
   .avatar-container {
     height: 50px;

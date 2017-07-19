@@ -1,11 +1,11 @@
 <template>
-    <div class="app-container">
-        <el-form ref="form" :model="form" label-width="80px">
-          this is home page
-          <router-link>
-             <el-button type="primary" @click="showRouterItem()">测试按钮</el-button> 
-          </router-link>
-        </el-form>
+    <div class="home">
+      <!-- 首页头部 -->
+      <home-header></home-header>
+      <!-- 首页内容 -->
+      <router-view></router-view>
+      <!-- 首页底部 -->
+      <home-footer></home-footer>
     </div>
 </template>
 
@@ -13,22 +13,13 @@
   export default {
     data() {
       return {
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        }
       }
     },
     methods: {
-      onSubmit() {
-        console.log('submit!');
-      }
     }
   }
 </script>
+
+<style scoped>
+
+</style>
