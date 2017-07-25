@@ -8,7 +8,7 @@
   export default {
     data() {
       return {
-        msg: 'this is testAdmin page'
+        msg: 'this is testUser page'
       }
     },
     methods: {

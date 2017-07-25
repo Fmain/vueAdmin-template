@@ -12,12 +12,14 @@ import '@/assets/iconfont/iconfont'
 import IconSvg from '@/components/Icon-svg/index.vue'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import vueres from 'vue-resource'
 
 import echarts from 'echarts' // 需要在需要添加图标的组件中创建依赖的实例var echarts = require('echarts');
 Vue.prototype.$echarts = echarts;
 
 Vue.config.productionTip = false
 
+Vue.use(vueres);
 Vue.use(ElementUI);
 Vue.component('icon-svg', IconSvg)
 Vue.use(iView)
@@ -42,7 +44,7 @@ router.beforeEach((to, from, next) => {
       }
     }
   } else {
-    if (whiteList.indexOf(to.path) !== -1) { // 在免登录白名单，直接进入
+    if (whiteList.indexOf(to.path) != -1) { // 在免登录白名单，直接进入
       next()
     } else {
       next('/home'); // 否则全部重定向到登录页

@@ -43,10 +43,10 @@ const U_O_qyxx_cbfx = _import('_opinion/__qyxx/cbfxUser');
 const U_O_qyxx_zzjb = _import('_opinion/__qyxx/zzjbUser');
 // 竞争对手
 const A_O_jzds = _import('_opinion/__jzds/testAdmin');
-const U_O_jzds = _import('_opinion/__jzds/testUser');
+const U_O_jzds_xxhz = _import('_opinion/__jzds/xxhzUser');
 // 热点监测
 const A_O_rdjc = _import('_opinion/__rdjc/testAdmin');
-const U_O_rdjc = _import('_opinion/__rdjc/testUser');
+const U_O_rdjc_xxhz = _import('_opinion/__rdjc/xxhzUser');
 // 舆情报告
 const A_O_yqbg = _import('_opinion/__yqbg/yqbgAdmin');
 const U_O_yqbg = _import('_opinion/__yqbg/yqbgUser');
@@ -55,10 +55,16 @@ const A_O_yqyj = _import('_opinion/__yqyj/yqyjAdmin');
 const U_O_yqyj = _import('_opinion/__yqyj/yqyjUser');
 
 /* _indexnumber */
+// ICT
 const A_I_ict = _import('_indexnumber/__ict/testAdmin');
-const U_I_ict = _import('_indexnumber/__ict/testUser');
+const U_I_ict_hlw = _import('_indexnumber/__ict/hlwUser');
+const U_I_ict_tx = _import('_indexnumber/__ict/txUser');
+const U_I_ict_dz = _import('_indexnumber/__ict/dzUser');
+// 经济金融
 const A_I_jjjr = _import('_indexnumber/__jjjr/testAdmin');
-const U_I_jjjr = _import('_indexnumber/__jjjr/testUser');
+const U_I_jjjr_jj = _import('_indexnumber/__jjjr/jjUser');
+const U_I_jjjr_trz = _import('_indexnumber/__jjjr/trzUser');
+const U_I_jjjr_ysp = _import('_indexnumber/__jjjr/yspUser');
 
 /* _report */
 // 上线报告
@@ -72,10 +78,14 @@ const A_R_bggl = _import('_report/__bggl/testAdmin');
 const U_R_bggl = _import('_report/__bggl/testUser');
 
 /* _setting */
-const A_S_grxx = _import('_setting/__grxx/grxxAdmin');
+// 我的面板
+const A_S_grxx = _import('_setting/__wdmb/grxxAdmin');
+
+// const A_S_grxx = _import('_setting/__grxx/grxxAdmin');
 const U_S_grxx = _import('_setting/__grxx/grxxUser');
-const A_S_xgmm = _import('_setting/__xgmm/xgmmAdmin');
+// const A_S_xgmm = _import('_setting/__xgmm/xgmmAdmin');
 const U_S_xgmm = _import('_setting/__xgmm/xgmmUser');
+import mytest from '@/components/test'
 
 Vue.use(Router);
 
@@ -90,6 +100,7 @@ Vue.use(Router);
 //所有权限通用路由表 
 //如首页和登录页和一些不用权限的公用页面
 export const constantRouterMap = [
+    // {path:'/mytest',component:mytest},
     { path: '/login', component: Login, hidden: true },
     { path: '/register', component: register, hidden: true },
     { path: '/home', component: home, hidden: true },
@@ -124,9 +135,10 @@ export const asyncRouterMap = [
     index: 1,
     path: '/O_hhzx',
     component: Layout,
-    // redirect: 'O_hhzx/testAdmin',
+    // redirect: 'O_hhzx/xxhz',
+    redirect: 'noredirect',
     name: '行业资讯',
-    icon: 'zujian',
+    icon: 'pie-graph',
     hidden: false,
     noDropdown: false,
     children: [
@@ -139,55 +151,55 @@ export const asyncRouterMap = [
     index: 1,
     path: '/O_qyxx',
     component: Layout,
-    // redirect: '__qyxx/testAdmin',
+    redirect: 'noredirect',
     name: '企业信息',
-    icon: 'zujian',
+    icon: 'ionic',
     hidden: false,
     noDropdown: false,
     children: [
       { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_qyxx, name: 'testAdmin__qyxx ' },
       // { meta: { role: ['editor'] }, path: 'testUser', component: U_O_qyxx, name: 'testUser__qyxx ' },
-      { meta: { role: ['editor'] }, path: 'xxhz', component: U_O_qyxx_xxhz, name: '信息汇总 ' },
-      { meta: { role: ['editor'] }, path: 'nrfx', component: U_O_qyxx_nrfx, name: '内容分析 ' },
-      { meta: { role: ['editor'] }, path: 'cbfx', component: U_O_qyxx_cbfx, name: '成本分析 ' },
-      { meta: { role: ['editor'] }, path: 'zzjb', component: U_O_qyxx_zzjb, name: '制作简报 ' },
+      { meta: { role: ['editor'] }, path: 'xxhz', component: U_O_qyxx_xxhz, name: '信息汇总（self）' },
+      { meta: { role: ['editor'] }, path: 'nrfx', component: U_O_qyxx_nrfx, name: '内容分析（self）' },
+      { meta: { role: ['editor'] }, path: 'cbfx', component: U_O_qyxx_cbfx, name: '传播分析（self）' },
+      { meta: { role: ['editor'] }, path: 'zzjb', component: U_O_qyxx_zzjb, name: '制作简报（self）' },
     ]
   },
   {
     index: 1,
     path: '/O_jzds',
     component: Layout,
-    // redirect: '__jzds/testAdmin',
+    redirect: 'noredirect',
     name: '竞争对手',
-    icon: 'zujian',
+    icon: 'person-stalker',
     hidden: false,
     noDropdown: false,
     children: [
       { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_jzds, name: 'testAdmin__jzds ' },
-      { meta: { role: ['editor'] }, path: 'testUser', component: U_O_jzds, name: 'testUser__jzds ' },
+      { meta: { role: ['editor'] }, path: 'xxhz', component: U_O_jzds_xxhz, name: '信息汇总（竞品）' },
     ]
   },
   {
     index: 1,
     path: '/O_rdjc',
     component: Layout,
-    // redirect: '__rdjc/testAdmin',
+    redirect: 'noredirect',
     name: '热点监测',
-    icon: 'zujian',
+    icon: 'stats-bars',
     hidden: false,
     noDropdown: false,
     children: [
       { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_rdjc, name: 'testAdmin__rdjc ' },
-      { meta: { role: ['editor'] }, path: 'testUser', component: U_O_rdjc, name: 'testUser__rdjc ' },
+      { meta: { role: ['editor'] }, path: 'xxhz', component: U_O_rdjc_xxhz, name: '信息汇总（热点）' },
     ]
   },
   {
     index: 1,
     path: '/O_yqbg',
     component: Layout,
-    // redirect: '__yqbg/testAdmin',
+    redirect: 'noredirect',
     // name: '舆情报告',
-    icon: 'zujian',
+    icon: 'chatboxes',
     hidden: false,
     noDropdown: true,
     children: [
@@ -199,9 +211,9 @@ export const asyncRouterMap = [
     index: 1,
     path: '/O_yqyj',
     component: Layout,
-    // redirect: '__yqyj/testAdmin',
+    redirect: 'noredirect',
     // name: '舆情预警',
-    icon: 'zujian',
+    icon: 'arrow-graph-up-right',
     hidden: false,
     noDropdown: true,
     children: [
@@ -214,28 +226,32 @@ export const asyncRouterMap = [
     index: 2,
     path: '/I_ict',
     component: Layout,
-    // redirect: '__ict/testAdmin',
+    redirect: 'noredirect',
     name: 'ICT',
-    icon: 'zujian',
+    icon: 'podium',
     hidden: true,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_I_ict, name: 'testAdmin__ict ' },
-      { meta: { role: ['editor'] }, path: 'testUser', component: U_I_ict, name: 'testUser__ict ' },
+      // { meta: { role: ['admin'] }, path: 'testAdmin', component: A_I_ict, name: 'testAdmin__ict ' },
+      { meta: { role: ['editor'] }, path: 'hlw', component: U_I_ict_hlw, name: '互联网' },
+      { meta: { role: ['editor'] }, path: 'tx', component: U_I_ict_tx, name: '通信' },
+      { meta: { role: ['editor'] }, path: 'dz', component: U_I_ict_dz, name: '电子' },
     ]
   },
   {
     index: 2,
     path: '/I_jjjr',
     component: Layout,
-    // redirect: '__jjjr/testAdmin',
+    redirect: 'noredirect',
     name: '经济金融',
-    icon: 'zujian',
+    icon: 'earth',
     hidden: true,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_I_jjjr, name: 'testAdmin__jjjr ' },
-      { meta: { role: ['editor'] }, path: 'testUser', component: U_I_jjjr, name: 'testUser__jjjr ' },
+      // { meta: { role: ['admin'] }, path: 'testAdmin', component: A_I_jjjr, name: 'testAdmin__jjjr ' },
+      { meta: { role: ['editor'] }, path: 'jj', component: U_I_jjjr_jj, name: '经济' },
+      { meta: { role: ['editor'] }, path: 'trz', component: U_I_jjjr_trz, name: '投融资' },
+      { meta: { role: ['editor'] }, path: 'ysp', component: U_I_jjjr_ysp, name: '衍生品' },
     ]
   },
   // _report
@@ -243,9 +259,9 @@ export const asyncRouterMap = [
     index: 3,
     path: '/R_sxbg',
     component: Layout,
-    // redirect: '__bggl/testAdmin',
+    redirect: 'noredirect',
     // name: '上线报告',
-    icon: 'zujian',
+    icon: 'ios-book-outline',
     hidden: true,
     noDropdown: true,
     children: [
@@ -257,9 +273,9 @@ export const asyncRouterMap = [
     index: 3,
     path: '/R_dygl',
     component: Layout,
-    // redirect: '__dybg/testAdmin',
+    redirect: 'noredirect',
     // name: '订阅管理',
-    icon: 'zujian',
+    icon: 'android-bookmark',
     hidden: true,
     noDropdown: true,
     children: [
@@ -272,9 +288,9 @@ export const asyncRouterMap = [
     index: 4,
     path: '/S_grxx',
     component: Layout,
-    // redirect: '__dqgl/testAdmin',
+    redirect: 'noredirect',
     // name: '个人信息',
-    icon: 'zujian',
+    icon: 'android-contact',
     hidden: true,
     noDropdown: true,
     children: [
@@ -286,9 +302,9 @@ export const asyncRouterMap = [
     index: 4,
     path: '/S_xgmm',
     component: Layout,
-    // redirect: '__dqgl/testAdmin',
+    redirect: 'noredirect',
     // name: '修改密码',
-    icon: 'zujian',
+    icon: 'android-warning',
     hidden: true,
     noDropdown: true,
     children: [
@@ -296,5 +312,20 @@ export const asyncRouterMap = [
       { meta: { role: ['editor'] }, path: 'xgmm', component: U_S_xgmm, name: '修改密码' },
     ]
   },
+  {
+    index: 4,
+    path: '/S_wdmb',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '我的面板',
+    icon: 'android-warning',
+    hidden: true,
+    noDropdown: false,
+    meta: { role: ['admin'] },
+    children: [
+      { meta: { role: ['admin'] }, path: 'grxx', component: A_S_grxx, name: '个人信息' },
+    ]
+  },
+
   { path: '*', redirect: '/404', hidden: true }
 ];

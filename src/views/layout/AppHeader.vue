@@ -8,10 +8,11 @@
     </div>
 
     <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-      <el-menu-item index="1"><i class="el-icon-message"></i>舆情监测</el-menu-item>
-      <el-menu-item index="2"><i class="el-icon-star-on"></i>行业指数</el-menu-item>
-      <el-menu-item index="3"><i class="el-icon-menu"></i>研究报告</el-menu-item>
-      <el-menu-item index="4"><i class="el-icon-setting"></i>设置</el-menu-item>
+      <!-- <el-menu-item index="1"><i class="el-icon-message"></i>舆情监测</el-menu-item> -->
+      <el-menu-item index="1"><Icon type="person-stalker"></Icon>舆情监测</el-menu-item>
+      <el-menu-item index="2"><Icon type="ios-pulse"></Icon></Icon>行业指数</el-menu-item>
+      <el-menu-item index="3"><Icon type="android-list"></Icon>研究报告</el-menu-item>
+      <el-menu-item index="4"><Icon type="gear-b"></Icon>设置</el-menu-item>
     </el-menu> 
 
     <!-- 全屏组件 -->
@@ -24,9 +25,14 @@
         </div>
         <el-dropdown-menu class="user-dropdown" slot="dropdown">
             <router-link class='inlineBlock' to="/">
-                <el-dropdown-item>
-                    Home
-                </el-dropdown-item>
+                 <el-dropdown-item> 
+                    个人信息
+                 </el-dropdown-item> 
+            </router-link>
+            <router-link class='inlineBlock' to="/">
+                 <el-dropdown-item> 
+                    修改密码
+                 </el-dropdown-item> 
             </router-link>
             <el-dropdown-item divided><span @click="logout" style="display:block;">退出登录</span></el-dropdown-item>
         </el-dropdown-menu>
@@ -129,6 +135,11 @@
     line-height: 60px;
     padding-left: 10px;
     padding-right: 30px;
+  }
+  // iview Icon
+  .ivu-icon {
+    vertical-align: baseline;
+    margin-right: 6px;
   }
   .nav_margin {
     float: left;

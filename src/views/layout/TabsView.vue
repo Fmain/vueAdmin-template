@@ -41,7 +41,7 @@
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   .tabs-view-container {
-    display: inline-block;
+    // display: inline-block;
     vertical-align: top;
     margin-left: 10px;
     .tabs-view {
