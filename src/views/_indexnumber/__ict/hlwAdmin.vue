@@ -14,9 +14,11 @@
     },
     methods: {
       test(){
-         this.$http.post("http://10.35.16.70:8080/user/login",{
-            user: 'admin',
-            password: '11111'
+         this.$http.post("http://10.35.16.70:8080/myinfo/timeS",{
+            times: "today",
+            inclination: "allsentiment",
+            mediatmp: "allmedia",
+            flag :0
             },{emulateJSON:true})
         .then(function (res) {
               alert('请求成功了！');

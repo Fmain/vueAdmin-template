@@ -4,7 +4,9 @@
         <levelbar></levelbar>
     
         <!-- 标签 -->
-        <tabs-view class="tabs_view"></tabs-view>
+         <div class="tabs_view"> 
+            <tabs-view></tabs-view>
+         </div> 
     </el-menu>
 </template>
 
@@ -38,15 +40,13 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
 .navbar {
-    // height: 50px;
-    // line-height: 50px;
-    // border-radius: 0px !important;
+    width: 100%;
+    min-width: 860px;
+    border-radius: 0px !important;
     position: fixed;
     z-index: 999;
-    width: 100%;
-    left: 1;
-    height: 35px;
-    line-height: 35px;
+    height: 40px;
+    line-height: 40px;
     padding-left: 15px;
     background-color: #ECEFF1;
     border: 1px solid #C1C1C1;
@@ -55,12 +55,14 @@ export default {
         position: absolute;
         right: 150px;
     }
+    .app-levelbar.el-breadcrumb {
+        float: left;
+    }
     .tabs_view {
-        width: 900px;
+        width: 70%;
         height: 35px;
-        position: absolute;
-        top: 0;
-        left: 254px;
+        float: left;
+        margin-left: 10px;
         overflow: hidden;
     } 
     // .screenfull {

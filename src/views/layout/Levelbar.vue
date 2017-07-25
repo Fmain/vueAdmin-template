@@ -41,10 +41,9 @@
     .app-levelbar.el-breadcrumb {
       display: inline-block;
       font-size: 14px;
-      height:32px;
-      line-height: 32px;
+      height:40px;
+      line-height: 40px;
       margin-left: 10px;
-      background-color: #ECEFF1;
       .no-redirect {
         color: #97a8be;
         cursor: text;

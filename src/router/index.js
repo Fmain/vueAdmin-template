@@ -31,21 +31,20 @@ const Table = _import('table/index');
 // 命名规则 用户角色_一级_二级_三级
 /* _opinion */
 // 行业资讯
-const A_O_hyzx = _import('_opinion/__hyzx/testAdmin');
-// const U_O_hyzx = _import('_opinion/__hyzx/testUser');
+const A_O_hyzx_jcfa = _import('_opinion/__hyzx/jcfaAdmin');
 const U_O_hyzx_xxhz = _import('_opinion/__hyzx/xxhzUser');
 // 企业信息
-const A_O_qyxx = _import('_opinion/__qyxx/testAdmin');
+const A_O_qyxx_jcfa = _import('_opinion/__qyxx/jcfaAdmin');
 // const U_O_qyxx = _import('_opinion/__qyxx/testUser');
 const U_O_qyxx_xxhz = _import('_opinion/__qyxx/xxhzUser');
 const U_O_qyxx_nrfx = _import('_opinion/__qyxx/nrfxUser');
 const U_O_qyxx_cbfx = _import('_opinion/__qyxx/cbfxUser');
 const U_O_qyxx_zzjb = _import('_opinion/__qyxx/zzjbUser');
 // 竞争对手
-const A_O_jzds = _import('_opinion/__jzds/testAdmin');
+const A_O_jzds_jcfa = _import('_opinion/__jzds/jcfaAdmin');
 const U_O_jzds_xxhz = _import('_opinion/__jzds/xxhzUser');
 // 热点监测
-const A_O_rdjc = _import('_opinion/__rdjc/testAdmin');
+const A_O_rdjc_jcfa = _import('_opinion/__rdjc/jcfaAdmin');
 const U_O_rdjc_xxhz = _import('_opinion/__rdjc/xxhzUser');
 // 舆情报告
 const A_O_yqbg = _import('_opinion/__yqbg/yqbgAdmin');
@@ -56,36 +55,63 @@ const U_O_yqyj = _import('_opinion/__yqyj/yqyjUser');
 
 /* _indexnumber */
 // ICT
-const A_I_ict = _import('_indexnumber/__ict/testAdmin');
+const A_I_ict_hlw = _import('_indexnumber/__ict/hlwAdmin');
+const A_I_ict_tx = _import('_indexnumber/__ict/txAdmin');
+const A_I_ict_dz = _import('_indexnumber/__ict/dzAdmin');
 const U_I_ict_hlw = _import('_indexnumber/__ict/hlwUser');
 const U_I_ict_tx = _import('_indexnumber/__ict/txUser');
 const U_I_ict_dz = _import('_indexnumber/__ict/dzUser');
 // 经济金融
-const A_I_jjjr = _import('_indexnumber/__jjjr/testAdmin');
+const A_I_jjjr_jj = _import('_indexnumber/__jjjr/jjAdmin');
+const A_I_jjjr_trz = _import('_indexnumber/__jjjr/trzAdmin');
+const A_I_jjjr_ysp = _import('_indexnumber/__jjjr/yspAdmin');
 const U_I_jjjr_jj = _import('_indexnumber/__jjjr/jjUser');
 const U_I_jjjr_trz = _import('_indexnumber/__jjjr/trzUser');
 const U_I_jjjr_ysp = _import('_indexnumber/__jjjr/yspUser');
 
 /* _report */
-// 上线报告
-const A_R_sxbg = _import('_report/__sxbg/sxbgAdmin');
 const U_R_sxbg = _import('_report/__sxbg/sxbgUser');
-// 订阅管理
-const A_R_dygl = _import('_report/__dygl/dyglAdmin');
 const U_R_dygl = _import('_report/__dygl/dyglUser');
 
-const A_R_bggl = _import('_report/__bggl/testAdmin');
-const U_R_bggl = _import('_report/__bggl/testUser');
+const A_R_scbg = _import('_report/__scbg/scbgAdmin');
+const A_R_bggl = _import('_report/__bggl/bgglAdmin');
+const A_R_bgjs = _import('_report/__bgjs/bgjsAdmin');
+const A_R_tjfx = _import('_report/__tjfx/tjfxAdmin');
 
 /* _setting */
-// 我的面板
-const A_S_grxx = _import('_setting/__wdmb/grxxAdmin');
-
-// const A_S_grxx = _import('_setting/__grxx/grxxAdmin');
 const U_S_grxx = _import('_setting/__grxx/grxxUser');
-// const A_S_xgmm = _import('_setting/__xgmm/xgmmAdmin');
 const U_S_xgmm = _import('_setting/__xgmm/xgmmUser');
-import mytest from '@/components/test'
+/*我的面板*/
+const A_S_grxx = _import('_setting/__wdmb/grxxAdmin');
+const A_S_xgmm = _import('_setting/__wdmb/xgmmAdmin');
+/*用户管理*/
+const A_S_gly = _import('_setting/__yhgl/glyAdmin');
+const A_S_vip = _import('_setting/__yhgl/vipAdmin');
+const A_S_pt = _import('_setting/__yhgl/ptAdmin');
+/*系统设置*/
+const A_S_jbcs = _import('_setting/__xtsz/jbcsAdmin');
+const A_S_rzgl = _import('_setting/__xtsz/rzglAdmin');
+const A_S_dlrz = _import('_setting/__xtsz/dlrzAdmin');
+const A_S_dxjk = _import('_setting/__xtsz/dxjkAdmin');
+/*地区管理*/
+const A_S_yfsz = _import('_setting/__dqgl/yfszAdmin');
+const A_S_sjdq = _import('_setting/__dqgl/sjdqAdmin');
+const A_S_sqj = _import('_setting/__dqgl/sqjAdmin');
+const A_S_xjdq = _import('_setting/__dqgl/xjdqAdmin');
+/*微信公众*/
+const A_S_wxjk = _import('_setting/__wxgz/wxjkAdmin');
+const A_S_gzh = _import('_setting/__wxgz/gzhAdmin');
+const A_S_zfjk = _import('_setting/__wxgz/zfjkAdmin');
+/*关于我们*/
+const A_S_gsjj = _import('_setting/__gywm/gsjjAdmin');
+const A_S_qywh = _import('_setting/__gywm/qywhAdmin');
+const A_S_ryzz = _import('_setting/__gywm/ryzzAdmin');
+const A_S_lxwm = _import('_setting/__gywm/lxwmAdmin');
+/*前端首页*/
+const A_S_sytb = _import('_setting/__qdsy/sytbAdmin');
+const A_S_zjgg = _import('_setting/__qdsy/zjggAdmin');
+/*友情链接*/
+const A_S_yqlj = _import('_setting/__yqlj/yqljAdmin');
 
 Vue.use(Router);
 
@@ -142,7 +168,7 @@ export const asyncRouterMap = [
     hidden: false,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_hyzx, name: 'testAdmin__hyzx ' },
+      { meta: { role: ['admin'] }, path: 'jcfa', component: A_O_hyzx_jcfa, name: '监测方案1' },
       // { meta: { role: ['editor'] }, path: 'testUser', component: U_O_hyzx, name: 'testUser__hyzx ' },
       { meta: { role: ['editor'] }, path: 'xxhz', component: U_O_hyzx_xxhz, name: '信息汇总（行业） ' },
     ]
@@ -157,7 +183,7 @@ export const asyncRouterMap = [
     hidden: false,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_qyxx, name: 'testAdmin__qyxx ' },
+      { meta: { role: ['admin'] }, path: 'jcfa', component: A_O_qyxx_jcfa, name: '监测方案2 ' },
       // { meta: { role: ['editor'] }, path: 'testUser', component: U_O_qyxx, name: 'testUser__qyxx ' },
       { meta: { role: ['editor'] }, path: 'xxhz', component: U_O_qyxx_xxhz, name: '信息汇总（self）' },
       { meta: { role: ['editor'] }, path: 'nrfx', component: U_O_qyxx_nrfx, name: '内容分析（self）' },
@@ -175,7 +201,7 @@ export const asyncRouterMap = [
     hidden: false,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_jzds, name: 'testAdmin__jzds ' },
+      { meta: { role: ['admin'] }, path: 'jcfa', component: A_O_jzds_jcfa, name: '监测方案3 ' },
       { meta: { role: ['editor'] }, path: 'xxhz', component: U_O_jzds_xxhz, name: '信息汇总（竞品）' },
     ]
   },
@@ -189,7 +215,7 @@ export const asyncRouterMap = [
     hidden: false,
     noDropdown: false,
     children: [
-      { meta: { role: ['admin'] }, path: 'testAdmin', component: A_O_rdjc, name: 'testAdmin__rdjc ' },
+      { meta: { role: ['admin'] }, path: 'jcfa', component: A_O_rdjc_jcfa, name: '监测方案4 ' },
       { meta: { role: ['editor'] }, path: 'xxhz', component: U_O_rdjc_xxhz, name: '信息汇总（热点）' },
     ]
   },
@@ -232,7 +258,9 @@ export const asyncRouterMap = [
     hidden: true,
     noDropdown: false,
     children: [
-      // { meta: { role: ['admin'] }, path: 'testAdmin', component: A_I_ict, name: 'testAdmin__ict ' },
+      { meta: { role: ['admin'] }, path: 'hlw', component: A_I_ict_hlw, name: '互联网' },
+      { meta: { role: ['admin'] }, path: 'tx', component: A_I_ict_tx, name: '通信' },
+      { meta: { role: ['admin'] }, path: 'dz', component: A_I_ict_dz, name: '电子' },
       { meta: { role: ['editor'] }, path: 'hlw', component: U_I_ict_hlw, name: '互联网' },
       { meta: { role: ['editor'] }, path: 'tx', component: U_I_ict_tx, name: '通信' },
       { meta: { role: ['editor'] }, path: 'dz', component: U_I_ict_dz, name: '电子' },
@@ -249,6 +277,9 @@ export const asyncRouterMap = [
     noDropdown: false,
     children: [
       // { meta: { role: ['admin'] }, path: 'testAdmin', component: A_I_jjjr, name: 'testAdmin__jjjr ' },
+      { meta: { role: ['admin'] }, path: 'jj', component: A_I_jjjr_jj, name: '经济' },
+      { meta: { role: ['admin'] }, path: 'trz', component: A_I_jjjr_trz, name: '投融资' },
+      { meta: { role: ['admin'] }, path: 'ysp', component: A_I_jjjr_ysp, name: '衍生品' },
       { meta: { role: ['editor'] }, path: 'jj', component: U_I_jjjr_jj, name: '经济' },
       { meta: { role: ['editor'] }, path: 'trz', component: U_I_jjjr_trz, name: '投融资' },
       { meta: { role: ['editor'] }, path: 'ysp', component: U_I_jjjr_ysp, name: '衍生品' },
@@ -265,7 +296,6 @@ export const asyncRouterMap = [
     hidden: true,
     noDropdown: true,
     children: [
-      // { meta: { role: ['admin'] }, path: 'sxbg', component: A_R_sxbg, name: '上线报告 ' },
       { meta: { role: ['editor'] }, path: 'sxbg', component: U_R_sxbg, name: '上线报告 ' },
     ]
   },
@@ -279,8 +309,59 @@ export const asyncRouterMap = [
     hidden: true,
     noDropdown: true,
     children: [
-      // { meta: { role: ['admin'] }, path: 'dygl', component: A_R_dybg, name: '订阅管理 ' },
       { meta: { role: ['editor'] }, path: 'dygl', component: U_R_dygl, name: '订阅管理 ' },
+    ]
+  },
+  {
+    index: 3,
+    path: '/R_scbg',
+    component: Layout,
+    redirect: 'noredirect',
+    // name: '订阅管理',
+    icon: 'android-bookmark',
+    hidden: true,
+    noDropdown: true,
+    children: [
+      { meta: { role: ['admin'] }, path: 'scbg', component: A_R_scbg, name: '上传报告 ' },
+    ]
+  },
+  {
+    index: 3,
+    path: '/R_bggl',
+    component: Layout,
+    redirect: 'noredirect',
+    // name: '订阅管理',
+    icon: 'android-bookmark',
+    hidden: true,
+    noDropdown: true,
+    children: [
+      { meta: { role: ['admin'] }, path: 'bggl', component: A_R_bggl, name: '报告管理 ' },
+    ]
+  },
+  {
+    index: 3,
+    path: '/R_bgjs',
+    component: Layout,
+    redirect: 'noredirect',
+    // name: '订阅管理',
+    icon: 'android-bookmark',
+    hidden: true,
+    noDropdown: true,
+    children: [
+      { meta: { role: ['admin'] }, path: 'bgjs', component: A_R_bgjs, name: '报告检索 ' },
+    ]
+  },
+  {
+    index: 3,
+    path: '/R_tjfx',
+    component: Layout,
+    redirect: 'noredirect',
+    // name: '订阅管理',
+    icon: 'android-bookmark',
+    hidden: true,
+    noDropdown: true,
+    children: [
+      { meta: { role: ['admin'] }, path: 'tjfx', component: A_R_tjfx, name: '统计分析 ' },
     ]
   },
   // _setting
@@ -294,7 +375,6 @@ export const asyncRouterMap = [
     hidden: true,
     noDropdown: true,
     children: [
-      // { meta: { role: ['admin'] }, path: 'grxx', component: A_S_grxx, name: '个人信息' },
       { meta: { role: ['editor'] }, path: 'grxx', component: U_S_grxx, name: '个人信息' },
     ]
   },
@@ -308,7 +388,6 @@ export const asyncRouterMap = [
     hidden: true,
     noDropdown: true,
     children: [
-      // { meta: { role: ['admin'] }, path: 'xgmm', component: A_S_xgmm, name: '修改密码' },
       { meta: { role: ['editor'] }, path: 'xgmm', component: U_S_xgmm, name: '修改密码' },
     ]
   },
@@ -324,6 +403,119 @@ export const asyncRouterMap = [
     meta: { role: ['admin'] },
     children: [
       { meta: { role: ['admin'] }, path: 'grxx', component: A_S_grxx, name: '个人信息' },
+      { meta: { role: ['admin'] }, path: 'xgmm', component: A_S_xgmm, name: '修改密码' },
+    ]
+  },
+  {
+    index: 4,
+    path: '/S_yhgl',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '用户管理',
+    icon: 'android-warning',
+    hidden: true,
+    noDropdown: false,
+    meta: { role: ['admin'] },
+    children: [
+      { meta: { role: ['admin'] }, path: 'gly', component: A_S_gly, name: '管理员' },
+      { meta: { role: ['admin'] }, path: 'vip', component: A_S_vip, name: 'VIP管理' },
+      { meta: { role: ['admin'] }, path: 'pt', component: A_S_pt, name: '普通会员管理' },
+    ]
+  },
+  {
+    index: 4,
+    path: '/S_xtsz',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '系统设置',
+    icon: 'android-warning',
+    hidden: true,
+    noDropdown: false,
+    meta: { role: ['admin'] },
+    children: [
+      { meta: { role: ['admin'] }, path: 'jbcs', component: A_S_jbcs, name: '基本参数' },
+      { meta: { role: ['admin'] }, path: 'rzgl', component: A_S_rzgl, name: '日志管理' },
+      { meta: { role: ['admin'] }, path: 'dlrz', component: A_S_dlrz, name: '登录日志' },
+      { meta: { role: ['admin'] }, path: 'dxjk', component: A_S_dxjk, name: '短信接口' },
+    ]
+  },
+  {
+    index: 4,
+    path: '/S_dqgl',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '地区管理',
+    icon: 'android-warning',
+    hidden: true,
+    noDropdown: false,
+    meta: { role: ['admin'] },
+    children: [
+      { meta: { role: ['admin'] }, path: 'yfsz', component: A_S_yfsz, name: '运费设置' },
+      { meta: { role: ['admin'] }, path: 'sjdq', component: A_S_sjdq, name: '省级地区' },
+      { meta: { role: ['admin'] }, path: 'sqj', component: A_S_sqj, name: '市区级' },
+      { meta: { role: ['admin'] }, path: 'xjdq', component: A_S_xjdq, name: '县级地区' },
+    ]
+  },
+  {
+    index: 4,
+    path: '/S_wxgz',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '微信公众',
+    icon: 'android-warning',
+    hidden: true,
+    noDropdown: false,
+    meta: { role: ['admin'] },
+    children: [
+      { meta: { role: ['admin'] }, path: 'wxjk', component: A_S_wxjk, name: '微信接口' },
+      { meta: { role: ['admin'] }, path: 'gzh', component: A_S_gzh, name: '公众号' },
+      { meta: { role: ['admin'] }, path: 'zfjk', component: A_S_zfjk, name: '支付接口' },
+    ]
+  },
+  {
+    index: 4,
+    path: '/S_gywm',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '关于我们',
+    icon: 'android-warning',
+    hidden: true,
+    noDropdown: false,
+    meta: { role: ['admin'] },
+    children: [
+      { meta: { role: ['admin'] }, path: 'gsjj', component: A_S_gsjj, name: '公司介绍' },
+      { meta: { role: ['admin'] }, path: 'qywh', component: A_S_qywh, name: '企业文化' },
+      { meta: { role: ['admin'] }, path: 'ryzz', component: A_S_ryzz, name: '荣誉资质' },
+      { meta: { role: ['admin'] }, path: 'lxwm', component: A_S_lxwm, name: '联系我们' },
+    ]
+  },
+  {
+    index: 4,
+    path: '/S_qdsy',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '前端首页',
+    icon: 'android-warning',
+    hidden: true,
+    noDropdown: false,
+    meta: { role: ['admin'] },
+    children: [
+      { meta: { role: ['admin'] }, path: 'sytb', component: A_S_sytb, name: '首页头部' },
+      { meta: { role: ['admin'] }, path: 'zjgg', component: A_S_zjgg, name: '中间广告' },
+    ]
+  },
+  {
+    index: 4,
+    path: '/S_yqlj',
+    component: Layout,
+    redirect: 'noredirect',
+    name: '友情链接',
+    icon: 'android-warning',
+    hidden: true,
+    noDropdown: true,
+    meta: { role: ['admin'] },
+    children: [
+      { meta: { role: ['admin'] }, path: 'yqlj', component: A_S_yqlj, name: '友情链接' },
     ]
   },
 
