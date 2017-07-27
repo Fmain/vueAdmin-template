@@ -1,34 +1,42 @@
 <template>
-    <div class="app-container">
-        <el-form ref="form" :model="form" label-width="80px">
-          this is report page
-          <router-link>
-             <el-button type="primary" @click="showRouterItem()">测试按钮</el-button> 
-          </router-link>
-        </el-form>
+    <div>
+      <h2>{{msg}}
+      <router-link :to="'/login'" id="duer-forum"><button @click="test">登录</button></router-link>
+      </h2>
+      <button @click="test">testLogin</button> 
+
     </div>
 </template>
 
 <script>
+import axios from 'axios'
+import qs from 'qs'
   export default {
     data() {
       return {
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
-        }
+        msg: 'this is testUser page'
       }
     },
     methods: {
-      onSubmit() {
-        console.log('submit!');
+      test(){
+         axios.post('http://58.251.138.41:8083/user/login', qs.stringify({
+           username: "xiaolajiao",
+           password: "xlj123"
+         })).then(res => {
+           console.log("res.data:"+res.data, typeof(res.data))
+           console.log("res.data.data:"+res.data.data, typeof(res.data.data))
+           console.log("res.data.code:"+res.data.code, typeof(res.data.code))
+           this.testData = res.data
+         }).catch(err => {
+           console.log(err)
+         })
+
+
       }
     }
   }
 </script>
+
+<style scoped>
+
+</style>

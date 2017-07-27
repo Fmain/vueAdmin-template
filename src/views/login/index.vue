@@ -21,8 +21,8 @@
           登录
         </el-button>
       </el-form-item>
-      <div class='tips'>admin账号为:admin@test.com 密码随便填</div>
-      <div class='tips'>editor账号:editor@test.com 密码随便填</div>
+      <div class='tips'>admin账号为:admin 12345</div>
+      <div class='tips'>business账号:xiaolajiao xlj123</div>
     </el-form>
   </div>
 </template>

@@ -23,6 +23,17 @@ const user = {
       state.roles = roles;
     }
   },
+  /*
+    data数据格式：
+    data: {
+      // 头像地址，可以为空
+      avatar: "http://....."
+      // name
+      name: "用户名"
+      // role
+      role: ["admin"]
+    }
+  */
 
   actions: {
     // 登录
@@ -30,11 +41,11 @@ const user = {
       const username = userInfo.username.trim();
       return new Promise((resolve, reject) => {
         login(username, userInfo.password).then(response => {
-          console.log(username, userInfo.password)
           const data = response.data;
-          // console.log(data) //token:"admin"
-          Cookies.set('Admin-Token', data.token);
-          commit('SET_TOKEN', data.token);
+          Cookies.set('Admin-Token', data);
+          console.log(data);
+          commit('SET_TOKEN', data);
+          commit('SET_ROLES', data);
           resolve();
         }).catch(error => {
           reject(error);
@@ -48,7 +59,8 @@ const user = {
       return new Promise((resolve, reject) => {
         getInfo(state.token).then(response => {
           const data = response.data;
-          commit('SET_ROLES', data.role);
+          commit('SET_ROLES', data);
+          console.log(data)
           commit('SET_NAME', data.name);
           commit('SET_AVATAR', data.avatar);
           resolve(response);

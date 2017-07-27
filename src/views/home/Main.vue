@@ -50,7 +50,9 @@
                 <a href="#">舆情</a>
               </li>
               <li class="duer-supp">
-                <a class="duer-supp-a">报告</a>
+                <a class="duer-supp-a"><router-link :to="'/report'" id="duer-forum">报告</router-link></a>
+                
+
                 <ul class="duer-second-nav">
                   <li>
                     <a href="#">技术</a>

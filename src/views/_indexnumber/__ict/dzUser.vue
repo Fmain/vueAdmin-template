@@ -20,7 +20,7 @@ import qs from 'qs'
            username: "admin",
            password: "12345"
          })).then(res => {
-           console.log(res)
+           console.log(res.data.code, typeof(Number(res.data.code)))
            this.testData = res.data
          }).catch(err => {
            console.log(err)
