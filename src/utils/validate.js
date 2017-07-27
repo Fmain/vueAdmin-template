@@ -1,8 +1,9 @@
-/**
- * Created by jiachenpan on 16/11/18.
- */
-
-/* 是否是公司邮箱*/
+/**是否是合法用户名 */
+export function isUserName(str) {
+    const reg = /^[a-zA-Z0-9_-]{4,16}$/i;
+    return reg.test(str.trim());
+}
+/* 是否是邮箱*/
 export function isWscnEmail(str) {
     const reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/i;
     return reg.test(str.trim());

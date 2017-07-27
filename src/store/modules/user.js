@@ -27,10 +27,12 @@ const user = {
   actions: {
     // 登录
     Login({ commit }, userInfo) {
-      const email = userInfo.email.trim();
+      const username = userInfo.username.trim();
       return new Promise((resolve, reject) => {
-        login(email, userInfo.password).then(response => {
+        login(username, userInfo.password).then(response => {
+          console.log(username, userInfo.password)
           const data = response.data;
+          // console.log(data) //token:"admin"
           Cookies.set('Admin-Token', data.token);
           commit('SET_TOKEN', data.token);
           resolve();

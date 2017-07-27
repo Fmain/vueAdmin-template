@@ -30,6 +30,7 @@
     <div class="tabs-container">
       <a data-toggle="tab" href="#tab-1" aria-expanded="true">资讯</a>
       <el-button @click="getInfo">测试按钮</el-button>
+      <el-button @click="testGetInfo">测试按钮2</el-button>
     </div>
     <div class="line"></div>
     <!-- 加载动画 -->
@@ -51,6 +52,8 @@
 <script>
   import Loading from '../__hyzx/Loading'
   import axios from 'axios'
+  import fetch from '@/utils/fetch'
+
   export default {
     name: 'industryinfo',
     components: {
@@ -195,6 +198,18 @@
       this.getInfo()
     },
     methods: {
+      testGetInfo() {
+        return fetch({
+          url: '/myinfo/timeS',
+          method: 'post',
+          data: {
+            times: "today",
+            inclination: "allsentiment",
+            mediatmp: "allmedia",
+            flag: 0
+          }
+        })
+      },
       getInfo() {
         // axios.post('http://10.35.16.70:8080/myinfo/timeS',{
         //   times: "today",
@@ -207,8 +222,8 @@
         // }).catch(err => {
         //   console.log(err)
         // })
-        this.$http.post("http://10.35.16.70:8080/myinfo/timeS", {
-            times: "today",
+        this.$http.post("http://10.35.44.246:8080/myinfo/timeS", {
+            times: "lastseven",
             inclination: "allsentiment",
             mediatmp: "allmedia",
             flag: 1
@@ -216,7 +231,7 @@
             emulateJSON: true
           })
           .then(function(res) {
-            console.log(res.data[0])
+            console.log(res)
             this.tableData = res.data
             // console.log(this.tableData)
           }, function(err) {

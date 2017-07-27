@@ -1,13 +1,15 @@
 import fetch from '@/utils/fetch';
 
-export function login(email, password) {
+export function login(username, password) {
+  let data = {
+    email: username,
+    password
+  }
+  console.log(data)
   return fetch({
     url: '/user/login',
     method: 'post',
-    data: {
-      email,
-      password
-    }
+    data
   });
 }
 

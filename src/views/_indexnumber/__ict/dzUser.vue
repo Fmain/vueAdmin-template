@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+import qs from 'qs'
   export default {
     data() {
       return {
@@ -14,19 +16,16 @@
     },
     methods: {
       test(){
-         this.$http.post("http://10.35.16.70:8080/user/timeS",{
-            user: 'admin',
-            password: '11111'
-            },{emulateJSON:true})
-        .then(function (res) {
-              alert('请求成功了！');
-              console.log(res)
-              return(res.data)
-            },function (err) {
-            // 处理失败的结果
-            console.log('error:'+err)
-            }
-        );
+         axios.post('http://58.251.138.41:8083/user/login', qs.stringify({
+           username: "admin",
+           password: "12345"
+         })).then(res => {
+           console.log(res)
+           this.testData = res.data
+         }).catch(err => {
+           console.log(err)
+         })
+
 
       }
     }
