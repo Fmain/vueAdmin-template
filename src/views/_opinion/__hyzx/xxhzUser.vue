@@ -1,309 +1,283 @@
 <template>
-    <div class="xxhzUser">
-        <div class="tmt_top_left">
-            <ul>
-                <li id="selectTime1" style="height=32px;line-height:32px;">
-                    <span>时间:</span>
-                    <Radio-group v-model="button1" type="button" size="small">
-                        <a id="alltime" @click="getInfo(id)" class="tmt_a" value="alltime">
-                            <Radio label="全部 "></Radio>
-                        </a>
-                        <a id="today" @click="timeSelect(today)" value="today">
-                            <Radio label="今天"></Radio>
-                        </a>
-                        <a id="lastOne" @click="timeSelect(lastOne)" value="lastOne">
-                            <Radio label="昨天"></Radio>
-                        </a>
-                        <a id="lastseven" @click="timeSelect(lastseven);" value="lastseven">
-                            <Radio label="近7天"></Radio>
-                        </a>
-                        <a id="lastmonth" @click="timeSelect(lastmonth)" value="lastmonth">
-                            <Radio label="近30天"></Radio>
-                        </a>
-                        <a id="definetime" @click.prevent="change()">
-                            <Radio label="自定义"></Radio>
-                        </a>
-                    </Radio-group>
-                    <Date-picker type="datetimerange" format="yyyy-MM-dd HH:mm" placeholder="选择日期和时间" style="width: 300px" v-show="isShow"></Date-picker>
-                </li>
-    
-                <li id="sentiment1" style="height=32px;line-height:32px;">
-                    <span>情感:</span>
-                    <Radio-group v-model="button2" type="button" size="small">
-                        <a id="allsentiment" @click="checkDetails(allsentiment)" value="allsentiment">
-                            <Radio label="全部 "></Radio>
-                        </a>
-                        <a id="positive" @click="checkDetails(positive)" value="positive">
-                            <Radio label="正面"></Radio>
-                        </a>
-                        <a id="neutral" @click="checkDetails(neutral);" value="neutral">
-                            <Radio label="中性"></Radio>
-                        </a>
-                        <a id="negative" @click="checkDetails(negative)" value="negative">
-                            <Radio label="负面"></Radio>
-                        </a>
-                    </Radio-group>
-                </li>
-    
-                <li id="media1" style="height=32px;line-height:32px;">
-                    <span>媒体:</span>
-                    <Radio-group v-model="button3" type="button" size="small">
-                        <a id="allmedia" @click="mediaSelect(allmedia)" value="allmedia">
-                            <Radio label="全部 "></Radio>
-                        </a>
-                        <a id="webpage" @click="mediaSelect(webpage)" value="webpage">
-                            <Radio label="网页"></Radio>
-                        </a>
-                        <a id="weixin" @click="mediaSelect(weixin)" value="weixin">
-                            <Radio label="微信"></Radio>
-                        </a>
-                        <a id="weibo" @click="mediaSelect(weibo)" value="weibo">
-                            <Radio label="微博"></Radio>
-                        </a>
-                        <a id="newspaper" @click="mediaSelect(newspaper)" value="newspaper">
-                            <Radio label="报刊"></Radio>
-                        </a>
-                        <a id="client" @click="mediaSelect(client)" value="client">
-                            <Radio label="客户端"></Radio>
-                        </a>
-                        <a id="forum" @click="mediaSelect(forum)" value="forum">
-                            <Radio label="论坛"></Radio>
-                        </a>
-                    </Radio-group @onchange="sjkhdakj">
-                </li>
-            </ul>
-        </div>
-    
-        <div class="clear_float"></div>
-    
-        <div class="tabs-container">
-            <a data-toggle="tab" href="#tab-1" aria-expanded="true">资讯</a>
-        </div>
-    
-        <div class="line"></div>
-        <!-- <div class="tabs-container">
-                      <ul class="nav nav-tabs">
-                        <li class="defaultli active " id="li1">
-                          <a data-toggle="tab" href="#tab-1" aria-expanded="true">资讯</a>
-                        </li>
-                      </ul>
-                    </div>  -->
-    
-        <Loading v-if="!tableColumns1"></Loading>
-        <div class="" style="margin-top:20px;">
-            <Table border :data="tableData1" :columns="tableColumns1"></Table>
-            <div style="margin: 10px;overflow: hidden">
-                <div style="float: left;">
-                    <!-- <Page :total="100" :current="1" @on-change="changePage"></Page> -->
-                    <Page :total="200" show-total :current="1" @on-change="changePage" show-elevator show-sizer></Page>
-                </div>
-            </div>
-        </div>
-    
+  <div class="xxhzUser">
+    <!-- 选择栏 -->
+    <div class="tmt_top_left">
+      <ul>
+        <li class="selectTime">
+          <span>时间:</span>
+          <Radio-group v-model="selectTime" type="button" size="small">
+            <Radio v-for="option in optionTimes" :key="option.id" :label="option.value">{{option.time}}</Radio>
+          </Radio-group>
+          <!-- 自定义时间选择框 -->
+          <Date-picker v-show="showPicker" type="datetimerange" format="yyyy-MM-dd HH:mm" placeholder="选择日期和时间" style="width: 250px"></Date-picker>
+        </li>
+        <li class="selectSentiment">
+          <span>情感:</span>
+          <Radio-group v-model="selectSentiment" type="button" size="small">
+            <Radio v-for="option in optionSentiment" :key="option.id" :label="option.value">{{option.time}}</Radio>
+          </Radio-group>
+        </li>
+        <li class="selectMedia">
+          <span>媒体:</span>
+          <Radio-group v-model="selectMedia" type="button" size="small">
+            <Radio v-for="option in optionMedia" :key="option.id" :label="option.value">{{option.time}}</Radio>
+          </Radio-group>
+        </li>
+      </ul>
     </div>
+    <div class="clear_float"></div>
+    <!-- 标题 -->
+    <div class="tabs-container">
+      <a data-toggle="tab" href="#tab-1" aria-expanded="true">资讯</a>
+      <el-button @click="getInfo">测试按钮</el-button>
+    </div>
+    <div class="line"></div>
+    <!-- 加载动画 -->
+    <Loading v-if="!tableColumns"></Loading>
+    <!-- 表格 -->
+    <div class="table">
+      <!-- 表格 -->
+      <Table border :columns="tableColumns" :data="tableData"></Table>
+      <!-- 分页 -->
+      <div class="paging">
+        <div class="fr">
+          <!-- <Page :total="100" :current="1" @on-change="changePage"></Page> -->
+          <Page :total="tableData.length" :page-size="10" show-total :current="1" @on-change="changePage" show-elevator show-sizer></Page>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 <script>
-
-</script>
-
-<script>
-import Loading from '../__hyzx/Loading'
-import axios from 'axios'
-export default {
+  import Loading from '../__hyzx/Loading'
+  import axios from 'axios'
+  export default {
     name: 'industryinfo',
     components: {
-        Loading,
+      Loading,
     },
     data() {
-        return {
-            button1: true,
-            button2: true,
-            button3: true,
-            isShow: false,
-            timetype:'all',
-            tableData1: [],
-            tableColumns1: [
-                {
-                    title: '序号',
-                    // type:'index',
-                    key: 'name',
-                    width: '100'
-                },
-                {
-                    title: '标题',
-                    key: 'status',
-                },
-                {
-                    title: '性质',
-                    key: 'portrayal',
-                },
-                {
-                    title: '时间',
-                    key: 'people',
-                },
-                {
-                    title: '来源',
-                    key: 'time',
-                    render: (h, params) => {
-                        return h('div', '近' + params.row.time + '天');
-                    }
-                },
-                {
-                    title: '摘要',
-                    key: 'update',
-                    render: (h, params) => {
-                        return h('div', this.formatDate(this.tableData1[params.index].update));
-                    }
-                }
-            ]
+      return {
+        testData: '', ///////////////
+        selectTime: 'alltime',
+        showPicker: false,
+        selectSentiment: 'allsentiment',
+        selectMedia: 'allmedia',
+        optionTimes: [{
+            time: '全部',
+            value: "alltime"
+          },
+          {
+            time: '今天',
+            value: "today"
+          },
+          {
+            time: '昨天',
+            value: "lastOne"
+          },
+          {
+            time: '近7天',
+            value: "lastseven"
+          },
+          {
+            time: '近30天',
+            value: "lastmonth"
+          },
+          {
+            time: '自定义',
+            value: "custom"
+          },
+        ],
+        optionSentiment: [{
+            time: '全部',
+            value: "allsentiment"
+          },
+          {
+            time: '正面',
+            value: "positive"
+          },
+          {
+            time: '中性',
+            value: "neutral"
+          },
+          {
+            time: '负面',
+            value: "negative"
+          },
+        ],
+        optionMedia: [{
+            time: '全部',
+            value: "allmedia"
+          },
+          {
+            time: '网页',
+            value: "webpage"
+          },
+          {
+            time: '微信',
+            value: "weixin"
+          },
+          {
+            time: '微博',
+            value: "weibo"
+          },
+          {
+            time: '报刊',
+            value: "newspaper"
+          },
+          {
+            time: '客户端',
+            value: "client"
+          },
+          {
+            time: '论坛',
+            value: "forum"
+          },
+        ],
+        tableColumns: [{
+            title: '序号',
+            type: 'index',
+            key: 'index',
+            align: 'center',
+            width: '60'
+          },
+          {
+            title: '标题',
+            align: 'center',
+            key: 'title',
+            render: (h, params) => {
+              return h('div', [
+                h('a', {
+                  domProps: {
+                    href: params.row.url
+                  }
+                }, params.row.title)
+              ]);
+            }
+          },
+          {
+            title: '性质',
+            key: 'inclination',
+            align: 'center',
+            width: '80'
+          },
+          {
+            title: '时间',
+            align: 'center',
+            key: 'crawl_time',
+            width: '150'
+          },
+          {
+            title: '来源',
+            align: 'center',
+            key: 'source',
+            width: '90'
+          },
+          {
+            title: '摘要',
+            align: 'center',
+            key: 'summary',
+          }
+        ],
+        tableData: []
+      }
+    },
+    watch: {
+      selectTime(newVal, oldVal) {
+        if (newVal == "custom") {
+          this.showPicker = true
+        } else {
+          this.showPicker = false
         }
+      }
     },
-    computed: {
-        name() {
-            return this.$route.name
-        },
-        list() {
-            return this.$route.matched
-        },
-    },
-    created() {
-        this.getList();
-        this.getInfo();
+    beforeMount() {
+      this.getInfo()
     },
     methods: {
-        getInfo(){
-            axios.get('https://cnodejs.org/api/v1/topics')
-            .then(res=>{
-                alert('请求成功了！');
-                console.log(res.data)
-            }).catch(err=>{
-                console.log(err)
-            })
-        },
-        dsjkahdsakj(data){
-            // this.$http
-            var data={
-                timetype:this.timetype,
-                jhdaskj:'all',
-                media:'all'
-            }
-        },
-        getList(dataType) {
-            // url是请求的接口地址，具体请询问你们的后端
-            var url = 'https://cnodejs.org/api/v1/topics';
-            //data是请求携带的参数，比如登录要带上用户名密码
-            var data = {
-                "userName": this.user,
-                "passWord": this.psw
-            };
-            //请求头，或者是其他的一些设置内容，比如请求跨域
-            //名字随便起的，和下面post的时候一致就行
-            var hearder = {};
-            this.$http.post(url, {
-                "userName": this.user,
-                "pageSize": 10,
-                "pageIndex": 1,
-                "passWord": this.psw
-            })
-                //res是请求返回的内容，通常是一个json对象
-                .then(res => {
-                    alert('请求成功了！');
-                    // console.log(res);res.meassage
-                    var table = [{
-                        a: '1',
-                        age: '1'
-                    }, {
-                        name: '2',
-                        age: '2'
-                    }
-                    ];
-                    this.tableData1 = res.data;
-                    // alert(res.body.data[0].author.loginname);
-                }, res => {
-                    alert('请求失败了！');
-                })
-        },
-        change() {
-            this.isShow = !(this.isShow)
-        },
-        mockTableData1() {
-            let data = [];
-            for (let i = 0; i < 10; i++) {
-                data.push({
-                    name: '0' + Math.floor(Math.random() * 1000 + 1),
-                    status: Math.floor(Math.random() * 3 + 1),
-                    portrayal: ['城市渗透', '人群迁移', '消费指数', '生活指数', '娱乐指数',],
-                    people: [
-                        {
-                            n: '0' + Math.floor(Math.random() * 1000 + 1),
-                            c: Math.floor(Math.random() * 1000000 + 100000)
-                        },
-                        {
-                            n: '0' + Math.floor(Math.random() * 1000 + 1),
-                            c: Math.floor(Math.random() * 1000000 + 100000)
-                        },
-                        {
-                            n: '0' + Math.floor(Math.random() * 1000 + 1),
-                            c: Math.floor(Math.random() * 1000000 + 100000)
-                        }
-                    ],
-                    time: Math.floor(Math.random() * 7 + 1),
-                    update: new Date()
-                })
-            }
-            return data;
-        },
-        formatDate(date) {
-            const y = date.getFullYear();
-            let m = date.getMonth() + 1;
-            m = m < 10 ? '0' + m : m;
-            let d = date.getDate();
-            d = d < 10 ? ('0' + d) : d;
-            return y + '-' + m + '-' + d;
-        },
-        changePage() {
-            // 这里直接更改了模拟的数据，真实使用场景应该从服务端获取数据
-            this.tableData1 = this.mockTableData1();
-        }
+      getInfo() {
+        // axios.post('http://10.35.16.70:8080/myinfo/timeS',{
+        //   times: "today",
+        //   inclination: "allsentiment",
+        //   mediatmp: "allmedia",
+        //   flag :0
+        // }).then(res => {
+        //   console.log(res.data)
+        //   this.testData = res.data
+        // }).catch(err => {
+        //   console.log(err)
+        // })
+        this.$http.post("http://10.35.16.70:8080/myinfo/timeS", {
+            times: "today",
+            inclination: "allsentiment",
+            mediatmp: "allmedia",
+            flag: 1
+          }, {
+            emulateJSON: true
+          })
+          .then(function(res) {
+            console.log(res.data[0])
+            this.tableData = res.data
+            // console.log(this.tableData)
+          }, function(err) {
+            // 处理失败的结果
+            console.log('error:' + err)
+          });
+      },
+      changePage() {
+        // 这里直接更改了模拟的数据，真实使用场景应该从服务端获取数据
+        this.getInfo()
+      }
     },
-    events: {
-        // 分页组件传回的表格数据（这里即为服务器传回的数据）
-        'data'(data) {
-            this.tableList = data
-        },
-        // 刷新数据
-        'refresh'() {
-            this.refresh()
-        }
-    }
-}
+    // events: {
+    //   // 分页组件传回的表格数据（这里即为服务器传回的数据）
+    //   'data' (data) {
+    //     this.tableList = data
+    //   },
+    //   // 刷新数据
+    //   'refresh' () {
+    //     this.refresh()
+    //   }
+    // }
+  }
 </script>
 
 <style scoped>
-.tabs-container {
+  .tabs-container {
     margin-top: 20px;
-}
-
-.xxhzUser {
+  }
+  .xxhzUser {
     /* margin-top: 20px; */
     padding: 40px 0 30px 0;
     margin-left: 2%;
     width: 96%;
-}
-
-.ivu-table .demo-table-row td {
+  }
+  .xxhzUser .tmt_top_left ul li {
+    height: 32px;
+    line-height: 32px;
+  }
+  .xxhzUser .table {
+    margin-top: 20px;
+  }
+  .xxhzUser .table .paging {
+    margin: 10px;
+    overflow: hidden;
+  }
+  .xxhzUser .table .paging .fr {
+    float: right;
+  }
+  .ivu-table .demo-table-row td {
     height: 16px;
     line-height: 16px;
     overflow: hidden;
     white-space: nowrap;
-}
-
-.line {
+  }
+  .line {
     width: 100%;
     height: 2px;
     margin: 15px 0 15px 0;
     background-color: #C1C1C1;
-}
+  }
 </style>
 
 

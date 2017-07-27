@@ -14,13 +14,14 @@
     },
     methods: {
       test(){
-         this.$http.post("http://10.35.16.70:8080/user/login",{
+         this.$http.post("http://10.35.16.70:8080/user/timeS",{
             user: 'admin',
             password: '11111'
             },{emulateJSON:true})
         .then(function (res) {
               alert('请求成功了！');
-              console.log(res.data)
+              console.log(res)
+              return(res.data)
             },function (err) {
             // 处理失败的结果
             console.log('error:'+err)
